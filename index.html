@@ -1,76 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
  function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
-
- function dependentPicklist(selectObject){
-    var level2Picklist = [];
-    var type = selectObject.value;
-    console.log('type: '+type);
-    switch(type){
-        case "Feature Request":
-        level2Picklist.push("Safety Riding");
-        break;
-
-        case "Question":
-        level2Picklist.push("Publication (สิ่งพิมพ์(Order))");
-        level2Picklist.push("Honda VIP Card");
-        break;
-
-        case "Inquiry (สอบถาม)":
-        level2Picklist.push("Sales (ขาย)");
-        level2Picklist.push("Parts (อะไหล่)");
-        level2Picklist.push("Accessory (อะไหล่ตกแต่ง)");
-        level2Picklist.push("Product (ผลิตภัณฑ์)");
-        break;
-
-        case "Complaint (ร้องเรียน)":
-        level2Picklist.push("Call Center");
-        break;
-
-        case "Comment (แสดงความคิดเห็น)":
-        level2Picklist.push("Service (บริการ)");
-        level2Picklist.push("Others (อื่นๆ)");
-        break;
-
-        case "Thanks (ขอบคุณ)":
-        level2Picklist.push("Activities (กิจกรรม)");
-        break;
-
-        case "Tech Line (CSI, HAS)":
-        level2Picklist.push("Warranty Register (CSI, HAS)");
-        level2Picklist.push("Warranty Register (Sub)");
-        break;
-
-        case "Tech Line (Repair Shop)":
-        level2Picklist.push("Warranty Register (User)");
-        break;
-
-    }
-
-    console.log('level2Picklist: '+JSON.stringify(level2Picklist));
-
-    var lv2option = ''; 
-    level2Picklist.forEach(element => {
-        lv2option += '<option value="' + element + '">' + element + '</option>'
-    })
-
-    console.log('lv2option: '+lv2option);
-
-    document.getElementById('00N1e00000jZd6Z').innerHTML = lv2option;
- }
 </script>
-
-</head>
-<body>
-
-
 
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
@@ -90,25 +28,17 @@
 <!--  value="jwiwitumpon@deloitte.com">                                       -->
 <!--  ----------------------------------------------------------------------  -->
 
-
-
-
-
-
 Agent Name:<input  id="00N1e00000jZd6W" maxlength="255" name="00N1e00000jZd6W" size="20" type="text" /><br>
 
-Name: <span style="color:red;">*</span> <input  id="00N1e00000mQXDJ" maxlength="255" name="00N1e00000mQXDJ" size="20" type="text" required="true"/><br>
+Name:<input  id="00N1e00000mQXDJ" maxlength="255" name="00N1e00000mQXDJ" size="20" type="text" /><br>
 
-Lastname: <span style="color:red;">*</span> <input  id="00N1e00000mQXDG" maxlength="255" name="00N1e00000mQXDG" size="20" type="text" required="true" /><br>
+Lastname:<input  id="00N1e00000mQXDG" maxlength="255" name="00N1e00000mQXDG" size="20" type="text" /><br>
 
-Mobile: <span style="color:red;">*</span> <input  id="00N1e00000mQXDI" maxlength="40" name="00N1e00000mQXDI" required="true" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" /><br>
+Mobile:<input  id="00N1e00000mQXDI" maxlength="40" name="00N1e00000mQXDI" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" /><br>
 
-<label for="email">Email</label> <span style="color:red;">*</span> <input  id="email" maxlength="80" name="email" size="20" required="true" type="text" /><br>
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
-Contact Type: <span style="color:red;">*</span> 
-<select required="true" id="00N1e00000mQXDE" name="00N1e00000mQXDE" title="Contact Type">
-<option value="">--None--</option>
-<option value="Dealer">Dealer</option>
+Contact Type:<select  id="00N1e00000mQXDE" name="00N1e00000mQXDE" title="Contact Type"><option value="">--None--</option><option value="Dealer">Dealer</option>
 <option value="บุคคลทั่วไป">บุคคลทั่วไป</option>
 </select><br>
 
@@ -118,10 +48,7 @@ VIN Number:<input  id="00N1e00000mQXDM" maxlength="255" name="00N1e00000mQXDM" s
 
 Engine Number:<input  id="00N1e00000mQXDF" maxlength="255" name="00N1e00000mQXDF" size="20" type="text" /><br>
 
-<label for="type">Type</label> <span style="color:red;">*</span> 
-<select  required="true" id="type" name="type" onchange="dependentPicklist(this)">
-<option value="">--None--</option>
-<option value="Problem">Problem</option>
+<label for="type">Type</label><select  id="type" name="type"><option value="">--None--</option><option value="Problem">Problem</option>
 <option value="Feature Request">Feature Request</option>
 <option value="Question">Question</option>
 <option value="Inquiry (สอบถาม)">Inquiry (สอบถาม)</option>
@@ -132,10 +59,7 @@ Engine Number:<input  id="00N1e00000mQXDF" maxlength="255" name="00N1e00000mQXDF
 <option value="Tech Line (Repair Shop)">Tech Line (Repair Shop)</option>
 </select><br>
 
-Case Type Lv2: <span style="color:red;">*</span> 
-<select required="true" id="00N1e00000jZd6Z" name="00N1e00000jZd6Z" title="Case Type Lv2">
-<!-- <option value="">--None--</option>
-<option value="Product (ผลิตภัณฑ์)">Product (ผลิตภัณฑ์)</option>
+Case Type Lv2:<select  id="00N1e00000jZd6Z" name="00N1e00000jZd6Z" title="Case Type Lv2"><option value="">--None--</option><option value="Product (ผลิตภัณฑ์)">Product (ผลิตภัณฑ์)</option>
 <option value="Sales (ขาย)">Sales (ขาย)</option>
 <option value="Service (บริการ)">Service (บริการ)</option>
 <option value="Parts (อะไหล่)">Parts (อะไหล่)</option>
@@ -148,12 +72,10 @@ Case Type Lv2: <span style="color:red;">*</span>
 <option value="Safety Riding">Safety Riding</option>
 <option value="Activities (กิจกรรม)">Activities (กิจกรรม)</option>
 <option value="Call Center">Call Center</option>
-<option value="Others (อื่นๆ)">Others (อื่นๆ)</option> -->
+<option value="Others (อื่นๆ)">Others (อื่นๆ)</option>
 </select><br>
 
-Case Type Lv3: <span style="color:red;">*</span> 
-<select required="true" id="00N1e00000jZd6a" name="00N1e00000jZd6a" title="Case Type Lv3">
-<option value="">--None--</option><option value="ขายเงินผ่อน ไม่ขายเงินสด">ขายเงินผ่อน ไม่ขายเงินสด</option>
+Case Type Lv3:<select  id="00N1e00000jZd6a" name="00N1e00000jZd6a" title="Case Type Lv3"><option value="">--None--</option><option value="ขายเงินผ่อน ไม่ขายเงินสด">ขายเงินผ่อน ไม่ขายเงินสด</option>
 <option value="Accident/Injury (อุบัติเหตุ/บาดเจ็บ)">Accident/Injury (อุบัติเหตุ/บาดเจ็บ)</option>
 <option value="Address/Phone request (ขอที่อยู่/เบอร์โทรศัพท์)">Address/Phone request (ขอที่อยู่/เบอร์โทรศัพท์)</option>
 <option value="Advertisement (การโฆษณา)">Advertisement (การโฆษณา)</option>
@@ -333,12 +255,7 @@ Mileage:<input  id="00N1e00000mQXDH" name="00N1e00000mQXDH" size="20" type="text
 
 Reference Case:<input  id="00N1e00000mQXDK" maxlength="255" name="00N1e00000mQXDK" size="20" type="text" /><br>
 
-
-
 <div class="g-recaptcha" data-sitekey="6LekwrUpAAAAAKRzTmmLf8w8bp0dWDn_6IEBaSPf"></div><br>
 <input type="submit" name="submit">
 
 </form>
-
-</body>
-</html>
