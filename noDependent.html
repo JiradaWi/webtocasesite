@@ -38,9 +38,13 @@ Mobile:<input  id="00N1e00000mQXDI" maxlength="40" name="00N1e00000mQXDI" onkeyd
 
 <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
-Contact Type:<select  id="00N1e00000mQXDE" name="00N1e00000mQXDE" title="Contact Type"><option value="">--None--</option><option value="Dealer">Dealer</option>
-<option value="บุคคลทั่วไป">บุคคลทั่วไป</option>
+<div style="display:none">
+Contact Type:<select value="บุคคลทั่วไป" id="00N1e00000mQXDE" name="00N1e00000mQXDE" title="Contact Type">
+    <option value="">--None--</option>
+    <option value="Dealer">Dealer</option>
+<option value="บุคคลทั่วไป" selected="selected">บุคคลทั่วไป</option>
 </select><br>
+</div>
 
 Bike Model:<input  id="00N1e00000mQXDC" maxlength="255" name="00N1e00000mQXDC" size="20" type="text" /><br>
 
@@ -254,6 +258,9 @@ User&#39;s Province:<input  id="00N1e00000mQXDL" maxlength="255" name="00N1e0000
 Mileage:<input  id="00N1e00000mQXDH" name="00N1e00000mQXDH" size="20" type="text" /><br>
 
 Reference Case:<input  id="00N1e00000mQXDK" maxlength="255" name="00N1e00000mQXDK" size="20" type="text" /><br>
+
+Description:
+<textarea name="description"></textarea>
 
 <!-- <div class="g-recaptcha" data-sitekey="6LekwrUpAAAAAKRzTmmLf8w8bp0dWDn_6IEBaSPf"></div><br> -->
 <input type="submit" name="submit">
