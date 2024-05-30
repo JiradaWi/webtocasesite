@@ -38,269 +38,85 @@
    </script>
 
    <style type="text/css">
-       .pageNavigate{
-        color:  red;
-       }
-
-       .progressBar{
-        height: 5px;
-       }
-
-       .scoreBtn{
-        background-color: #bababa;
-       
+  
+       .requiredStar{
+        color: red;
         font-weight: bold;
-        border:  solid 1px;
-      
        }
 
-       .senondNav{
-        font-weight: bold;
-        font-size: smaller;
+       .cardHeader{
+        font-size: medium;
        }
+
+       .cardStyle{
+        border-left-color: red;
+        border-left-width: 5px;
+        
+       }
+
+       .number{
+        background-color: red;
+        color: white;
+        font-weight: bold;
+
+        border-radius: 100%;
+        width: 20px;
+        /*display: inline;*/
+       }
+
+    
    </style>
 </head>
 <body>
 
-  <div class="">
+  <div class="" style="box-shadow: 2px 2px 5px grey">
     <nav class="navbar navbar-expand-lg" style="background-color: red;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-        Honda
+        <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
+        USER VOICE SURVEY (SALES)
+        <br/>
+        แบบสอบถามความพึงพอใจ (การขาย)
         </a>
+
+        <div>
+            <img src="https://e7.pngegg.com/pngimages/744/19/png-clipart-honda-motorcycle-logo-honda-logo-car-motorcycle-honda-cbr-series-honda-angle-text.png" width="50">
+        </div>
     </div>
     </nav>
-    
-<div id="page1">
-  <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand senondNav">PERSONAL INFORMATION <br/> ข้อมูลส่วนบุคคล</a>
-    
-    <div>
-        1/5
-    </div>
-  </div>
-</nav>
-<div class="progress progressBar" >
-  <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-
- <div class="row">
-    <div class="col-6"></div>
-    <div class="col-6 pageNavigate" style="text-align: right;" onclick="openPage(2)">Next ></div>
-  </div>
-
-<form>
-    <div style="padding: 15px;">
-        <!-- Page 2 content -->
-      <div class="mb-3">
-        <label for="Name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="Name" >
     </div>
 
-     <div class="mb-3">
-        <label for="Lastname" class="form-label">Lastname</label>
-        <input type="text" class="form-control" id="Lastname">
-    </div>
-
-    <div class="mb-3">
-        <label for="Age" class="form-label">Age</label>
-        <input type="Number" class="form-control" id="Age">
-    </div>
-
-    <div class="mb-3">
-        <label for="BikeModel" class="form-label">Bike Model</label>
-        <input type="Text" class="form-control" id="BikeModel">
-    </div>
-
-    <div class="mb-3">
-        <label for="DealerName" class="form-label">Dealer Name</label>
-        <input type="Text" class="form-control" id="DealerName">
-    </div>
-</div>
-</form>
-
-</div>
-
-
-<div id="page2" style="display: none">
-     <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand senondNav"> PRE-SALES PROCESS <br/> ข้อมูลส่วนบุคคล</a>
-    
-    <div>
-        2/5
-    </div>
-  </div>
-</nav>
-<div class="progress progressBar" >
-  <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="row">
-    <div class="col-6 pageNavigate"  onclick="openPage(1)" > < Previous </div>
-    <div class="col-6 pageNavigate" style="text-align: right;" onclick="openPage(3)">Next ></div>
-</div>
-
-<form>
-    <div style="padding: 15px;" class="">
-     1. ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน
-     <br/>
-
-     <div class="row">
-        <div class="col-6 pageNavigate" > น้อยที่สุด </div>
-        <div class="col-6 pageNavigate" style="text-align: right;" >มากที่สุด</div>
-    </div>
-
-     <div class="row text-center">       
-        <div class="col-1 col-sm-1"></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 1)">1</button> </div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 2)">2</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 3)">3</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 4)">4</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 5)">5</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 6)">6</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 7)">7</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 8)">8</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 9)">9</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q1 rounded-circle" onclick="selectScore('q1', 10)">10</button></div>
-        <div class="col-1 col-sm-1"></div>
-    </div>
-     <br/>
-
-
-     2. บุคลิกภาพ กริยา มารยาท ความสุภาพของพนักงานที่มาต้อนรับ
-      <br/>
-
-     <div class="row">
-        <div class="col-6 pageNavigate" > น้อยที่สุด </div>
-        <div class="col-6 pageNavigate" style="text-align: right;" >มากที่สุด</div>
-    </div>
-
-     <div class="row text-center">       
-        <div class="col-1 col-sm-1"></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 1)">1</button> </div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 2)">2</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 3)">3</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 4)">4</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 5)">5</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 6)">6</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 7)">7</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 8)">8</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 9)">9</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q2 rounded-circle" onclick="selectScore('q2', 10)">10</button></div>
-        <div class="col-1 col-sm-1"></div>
-</div>
-     <br/>
-     3. พนักงานที่มาต้อนรับท่านมีความรู้ทั้งด้านเทคนิดและตัวสินค้า
-      <br/>
-
-     <div class="row">
-        <div class="col-6 pageNavigate" > น้อยที่สุด </div>
-        <div class="col-6 pageNavigate" style="text-align: right;" >มากที่สุด</div>
-    </div>
-
-     <div class="row text-center">       
-        <div class="col-1 col-sm-1"></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 1)">1</button> </div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 2)">2</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 3)">3</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 4)">4</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 5)">5</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 6)">6</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 7)">7</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 8)">8</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 9)">9</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q3 rounded-circle" onclick="selectScore('q3', 10)">10</button></div>
-        <div class="col-1 col-sm-1"></div>
-    </div>
-     <br/>
-     
-</div>
-</form>
-</div>
-
-
-
-
-<div id="page3" style="display: none">
-     <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand senondNav"> EXPERIENCE WITH SALES <br/> ประสบการณ์ที่มีต่อพนักงานขาย</a>
-    
-    <div>
-        3/5
-    </div>
-  </div>
-</nav>
-<div class="progress progressBar" >
-  <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<div class="row">
-    <div class="col-6 pageNavigate"  onclick="openPage(2)" > < Previous </div>
-    <div class="col-6 pageNavigate" style="text-align: right;" onclick="openPage(4)">Next ></div>
-</div>
-
-<form>
-    <div style="padding: 15px;" class="">
-     6. ท่านได้รับคำแนะนำการขับขี่ปลอดภัย เช่น การแนะนำให้ใส่หมวกกันน็อค ไม่ขับขี่เร็ว ไม่ขี่ตัดหน้า ไม่ขี่จี้ หรือ ดื่มไม่ขับ หรือไม่? 
-     <br/>
-        <div style="text-align: center;">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-outline-danger" for="btnradio1">ใช่ (ไปข้อ 7)</label>
-
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-danger" for="btnradio3">ไม่ (ไปข้อ 9)</label>
-            </div>
-        </div>
-     <br/>
-     <br/>
-
-
-     7. คำแนะนำเกี่ยวกับการขับขี่ปลอดภัยที่ได้รับมีประโยชน์กับท่านหรือไม่
-      <br/>
-
-     <div class="row">
-        <div class="col-6 pageNavigate" > น้อยที่สุด </div>
-        <div class="col-6 pageNavigate" style="text-align: right;" >มากที่สุด</div>
-    </div>
-
-     <div class="row text-center">       
-        <div class="col-1 col-sm-1"></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 1)">1</button> </div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 2)">2</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 3)">3</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 4)">4</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 5)">5</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 6)">6</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 7)">7</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 8)">8</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 9)">9</button></div>
-        <div class="col-1 col-sm-1">  <button type="button" class="btn scoreBtn q7 rounded-circle" onclick="selectScore('q7', 10)">10</button></div>
-        <div class="col-1 col-sm-1"></div>
-</div>
 <br/>
-     <br/>
-     8. ท่านได้รับคำแนะนำหลักการขับขี่ปลอดภัยด้วยวิธีการหรือช่องทางใด
-      <br/>
+<!-- body -->
+    <div style="padding: 2%;  font-weight: bold;">
+        PRE-SALES PROCESS <br/>
+        เริ่มต้นการขาย
 
-    <!-- checkbox -->
-     <br/>
-     
-</div>
-</form>
-</div>
-
-
-</div>
-
-<!--div class="layout layout-canvas-g">
- <div class="section">
-  <div class="columns col1">
-   <div data-type="slot" data-key="col1"></div>
+<div class="card w-100 mb-3 cardStyle">
+  <div class="card-body">
+    <h5 class="card-title cardHeader" > 
+         <div class="row">
+             <div class="col-1">
+                 <span class="badge text-bg-danger">1</span>
+             </div>
+             <div class="col-11">
+                  <div>   ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน <span class="requiredStar">*</span></div> 
+             </div>
+         </div>
+       
+       
+    </h5>
+    <p class="card-text">
+        <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+    </p>
   </div>
- </div>
-</div-->
+</div>
+
+
+        
+    </div>
+
+
+
+
 </body>
 </html>
