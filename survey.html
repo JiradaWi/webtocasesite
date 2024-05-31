@@ -10,29 +10,8 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
    <script type="text/javascript">
-       function openPage(pageNum){
-         var pageId = 'page'+pageNum;
-
-        document.getElementById('page1').style.display = 'none';
-        document.getElementById('page2').style.display = 'none';
-        document.getElementById('page3').style.display = 'none';
-
-        document.getElementById(pageId).style.display = 'inline';
-
-       }
-
-       function selectScore(question, answer){
-        console.log('selectScore: '+question+' '+answer);
-        var allQuestions = document.getElementsByClassName(question);
-
-        Array.prototype.forEach.call(allQuestions, function (question){
-             if(question.innerHTML == answer){
-                question.style.backgroundColor = 'red';
-            }else{
-                question.style.backgroundColor = '#bababa';
-            }
-        })
-      
+       function updateScore(value, questionNum){
+            document.getElementById(questionNum).innerHTML = value;
        }
 
    </script>
@@ -87,6 +66,23 @@
        .scoreAnswer{
         vertical-align: bottom;
        }
+
+
+
+
+ input[type='range']::-webkit-slider-runnable-track {
+     
+       background: red;
+     
+    }
+
+          input[type='range']::-webkit-slider-thumb {
+          border: 1px solid black;
+           box-shadow: 1px 1px 3px black;
+          background: white;
+         
+    }
+
     
    </style>
 </head>
@@ -133,10 +129,10 @@
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q1')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q1">5</span>
                         </div>
                     </div>
                 </div>
@@ -161,10 +157,10 @@
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q2')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q2">5</span>
                         </div>
                     </div>
                 </div>
@@ -189,10 +185,10 @@
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q3')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q3">5</span>
                         </div>
                     </div>
                 </div>
@@ -224,10 +220,10 @@
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q5')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q5">5</span>
                         </div>
                     </div>
                 </div>
@@ -246,7 +242,7 @@ ACCOMMONDATIONS & CLEANNESS <br/>
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">5</span>
+                    <span class="badge text-bg-danger">6</span>
                 </div>
                 <div class="col-11">
                     <div>สิ่งอำนวยความสะดวก และความสะอาดในบริเวณที่พักลูกค้า <span class="requiredStar">*</span></div> 
@@ -257,10 +253,10 @@ ACCOMMONDATIONS & CLEANNESS <br/>
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q6')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q6">5</span>
                         </div>
                     </div>
                 </div>
@@ -291,10 +287,10 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q7">5</span>
                         </div>
                     </div>
                 </div>
@@ -319,10 +315,10 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q8')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light">5</span>
+                            <span class="badge  text-bg-light" id="q8">5</span>
                         </div>
                     </div>
                 </div>
