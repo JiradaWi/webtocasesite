@@ -18,6 +18,8 @@
             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
             document.getElementById("questionProgress").innerHTML = allAnswered.length;
 
+            document.getElementById("progressBar").style.width = (allAnswered.length/11) * 100 + '%';
+
        }
 
    </script>
@@ -473,11 +475,10 @@ OVERALL EXPERIENCE <br/>
 <br/>
 <br/>
 <br/>
-
-
-
+<br/>
 
   <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+  
 
       <div class="container-fluid" >
         <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
@@ -486,10 +487,14 @@ OVERALL EXPERIENCE <br/>
        
         </a>
 
-        <div>
-            
-           
-        </div>
+<div style="width: 100%; text-align: right;">
+    
+    <div class="progress" role="progressbar" aria-label="Basic example"  style="width: 100%; border: solid white 2px; background-color: red">
+      <div class="progress-bar" style="width: 0%; background-color: white" id="progressBar"></div>
+    </div>
+</div>
+    
+       
     </div>
     </nav>
 
