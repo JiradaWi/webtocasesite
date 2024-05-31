@@ -38,6 +38,9 @@
    </script>
 
    <style type="text/css">
+        body{
+            background-color: #EEEEEE;
+        }
   
        .requiredStar{
         color: red;
@@ -64,14 +67,34 @@
         /*display: inline;*/
        }
 
+       .alignMiddle{
+        text-align: center;
+       }
+
+       .rangeLabel{
+        color:  red;
+        font-size: smaller;
+       }
+
+       .right{
+        text-align: right;
+       }
+
+       .left{
+        text-align: left;
+       }
+
+       .scoreAnswer{
+        vertical-align: bottom;
+       }
     
    </style>
 </head>
 <body>
 
-  <div class="" style="box-shadow: 2px 2px 5px grey">
-    <nav class="navbar navbar-expand-lg" style="background-color: red;">
-      <div class="container-fluid">
+  <div class="" style="box-shadow: 2px 2px 5px grey;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+      <div class="container-fluid" >
         <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
         USER VOICE SURVEY (SALES)
         <br/>
@@ -86,36 +109,262 @@
     </div>
 
 <br/>
+<br/>
+<br/>
+<br/>
 <!-- body -->
     <div style="padding: 2%;  font-weight: bold;">
         PRE-SALES PROCESS <br/>
         เริ่มต้นการขาย
 
 <div class="card w-100 mb-3 cardStyle">
-  <div class="card-body">
-    <h5 class="card-title cardHeader" > 
-         <div class="row">
-             <div class="col-1">
-                 <span class="badge text-bg-danger">1</span>
-             </div>
-             <div class="col-11">
-                  <div>   ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน <span class="requiredStar">*</span></div> 
-             </div>
-         </div>
-       
-       
-    </h5>
-    <p class="card-text">
-        <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
-    </p>
-  </div>
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">1</span>
+                </div>
+                <div class="col-11">
+                    <div>   ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
 </div>
 
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">2</span>
+                </div>
+                <div class="col-11">
+                    <div>บุคลิกภาพ กริยา มารยาท ความสุภาพ ของพนักงานที่มาต้อนรับ<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">3</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงานที่มาต้อนรับท่านมีความรู้ทั้งด้านเทคนิคและตัวสินค้า<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+
+ PRE-SERVICE PROCESS <br/>
+        ความเข้าใจรายการซ่อม
+
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">5</span>
+                </div>
+                <div class="col-11">
+                    <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+ACCOMMONDATIONS & CLEANNESS <br/>
+        สิ่งอำนวยความสะดวกและความสะอาด
+
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">5</span>
+                </div>
+                <div class="col-11">
+                    <div>สิ่งอำนวยความสะดวก และความสะอาดในบริเวณที่พักลูกค้า <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+AFTER SALES APPOINTMENT & INSTRUCTION <br/>
+        การนัดหมายและการชี้แจงรายละเอียดหลังการเข้ารับบริการ
+
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">7</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงาน มีการแจ้งกำหนดเวลาซ่อมเสร็จหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyle">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">8</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงาน มีการชี้แจ้งรายละเอียดค่าซ่อมและค่าอะไหล่ หลังการเข้ารับบริการหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+<div class="d-grid gap-2">
+  <button class="btn" style="background-color: red; color: white; font-weight: bold;" type="button">Submit</button>
+ 
+</div>
 
         
     </div>
 
 
+
+<br/>
+<br/>
+<br/>
+
+
+
+
+  <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+
+      <div class="container-fluid" >
+        <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
+       2 ใน 13 มีการตอบ
+
+       
+        </a>
+
+        <div>
+            
+           
+        </div>
+    </div>
+    </nav>
 
 
 </body>
