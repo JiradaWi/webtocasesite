@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+   <script type="text/javascript">
+       function updateScore(value, questionNum){
+            document.getElementById(questionNum).innerHTML = value;
+            document.getElementById(questionNum+'Card').classList.remove('cardStyleNotAnswer');
+            document.getElementById(questionNum+'Card').classList.add('cardStyleAnswered');
+
+            var allAnswered = document.getElementsByClassName("cardStyleAnswered");
+            document.getElementById("questionProgress").innerHTML = allAnswered.length;
+
+            document.getElementById("progressBar").style.width = (allAnswered.length/11) * 100 + '%';
+
+       }
+
+   </script>
+
+   <style type="text/css">
+        body{
+            background-color: #EEEEEE;
+        }
+  
+       .requiredStar{
+        color: red;
+        font-weight: bold;
+       }
+
+       .cardHeader{
+        font-size: medium;
+       }
+
+       .cardStyleNotAnswer{
+        border-left-color: grey;
+        border-left-width: 5px;
+        
+       }
+
+        .cardStyleAnswered{
+        border-left-color: #ED1A29;
+        border-left-width: 5px;
+        
+       }
+
+       .number{
+        background-color: #ED1A29;
+        color: white;
+        font-weight: bold;
+
+        border-radius: 100%;
+        width: 20px;
+        /*display: inline;*/
+       }
+
+       .alignMiddle{
+        text-align: center;
+       }
+
+       .rangeLabel{
+        color:  #ED1A29;
+        font-size: smaller;
+       }
+
+       .right{
+        text-align: right;
+       }
+
+       .left{
+        text-align: left;
+       }
+
+       .scoreAnswer{
+        vertical-align: bottom;
+       }
+
+
+
+
+ input[type='range']::-webkit-slider-runnable-track {
+     
+       background: #ED1A29;
+     
+    }
+
+          input[type='range']::-webkit-slider-thumb {
+          border: 1px solid black;
+           box-shadow: 1px 1px 3px black;
+          background: white;
+         
+    }
+
+    
+   </style>
+</head>
+<body>
+
+  <div class="" style="box-shadow: 2px 2px 5px grey;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #ED1A29; box-shadow: 2px 2px 5px grey;">
+      <div class="container-fluid" >
+        <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
+        USER VOICE SURVEY (SERVICES)
+        <br/>
+        แบบสอบถามความพึงพอใจ (การบริการ)
+        </a>
+
+        <div>
+            <img src="WingLogo.png" width="50">
+        </div>
+    </div>
+    </nav>
+    </div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- body -->
+    <div style="padding: 2%;  font-weight: bold;">
+        PRE-SALES PROCESS <br/>
+        เริ่มต้นการขาย
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q1Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">1</span>
+                </div>
+                <div class="col-11">
+                    <div>   ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q1')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q1">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q2Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">2</span>
+                </div>
+                <div class="col-11">
+                    <div>บุคลิกภาพ กริยา มารยาท ความสุภาพ ของพนักงานที่มาต้อนรับ<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q2')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q2">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q3Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">3</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงานที่มาต้อนรับท่านมีความรู้ทั้งด้านเทคนิคและตัวสินค้า<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q3')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q3">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q4Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">4</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงานมีการแจ้งรายการซ่อมและประเมินค่าใช้จ่ายก่อนดำเนินการหรือไม่? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q4')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q4">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+
+ PRE-SERVICE PROCESS <br/>
+        ความเข้าใจรายการซ่อม
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q5Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">5</span>
+                </div>
+                <div class="col-11">
+                    <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด<span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q5')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q5">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+ACCOMMONDATIONS & CLEANNESS <br/>
+        สิ่งอำนวยความสะดวกและความสะอาด
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q6Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">6</span>
+                </div>
+                <div class="col-11">
+                    <div>สิ่งอำนวยความสะดวก และความสะอาดในบริเวณที่พักลูกค้า <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q6')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q6">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+AFTER SALES APPOINTMENT & INSTRUCTION <br/>
+        การนัดหมายและการชี้แจงรายละเอียดหลังการเข้ารับบริการ
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q7Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">7</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงาน มีการแจ้งกำหนดเวลาซ่อมเสร็จหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q7">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q8Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">8</span>
+                </div>
+                <div class="col-11">
+                    <div>พนักงาน มีการชี้แจ้งรายละเอียดค่าซ่อมและค่าอะไหล่ หลังการเข้ารับบริการหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q8')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q8">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q9Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">9</span>
+                </div>
+                <div class="col-11">
+                    <div> พนักงาน มีการแจ้งนัดหมายให้เข้ารับบริการในครั้งต่อไปหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q9')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q9">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q10Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">10</span>
+                </div>
+                <div class="col-11">
+                    <div> หลังเข้ารับบริการ พนักงาน มีการสอบถามคุณภาพงานซ่อม ผ่านทางโทรศัพท์ ไลน์ SMS หรือช่องทางอื่นๆ หรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q10')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q10">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+OVERALL EXPERIENCE <br/>
+        ความพึงพอใจต่อประสบการณ์โดยรวม
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q11Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">11</span>
+                </div>
+                <div class="col-11">
+                    <div>ความพึงพอใจโดยรวมที่มีต่อการเข้ามาใช้บริการที่ร้าน ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q11')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q11">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+<div class="d-grid gap-2">
+  <button class="btn" style="background-color: #ED1A29; color: white; font-weight: bold;" type="button">Submit</button>
+ 
+</div>
+
+        
+    </div>
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+  <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+  
+
+      <div class="container-fluid" >
+        <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
+       <span id="questionProgress">0</span> ใน 11 มีการตอบ
+
+       
+        </a>
+
+<div style="width: 100%; text-align: right;">
+    
+    <div class="progress" role="progressbar" aria-label="Basic example"  style="width: 100%; border: solid white 2px; background-color: red">
+      <div class="progress-bar" style="width: 0%; background-color: white" id="progressBar"></div>
+    </div>
+</div>
+    
+       
+    </div>
+    </nav>
+
+
+</body>
+</html>

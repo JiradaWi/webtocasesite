@@ -18,8 +18,44 @@
             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
             document.getElementById("questionProgress").innerHTML = allAnswered.length;
 
-            document.getElementById("progressBar").style.width = (allAnswered.length/11) * 100 + '%';
+            document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
 
+       }
+
+       function q8Change(){
+            document.getElementById('q8Card').classList.remove('cardStyleNotAnswer');
+            document.getElementById('q8Card').classList.add('cardStyleAnswered');
+
+             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
+            document.getElementById("questionProgress").innerHTML = allAnswered.length;
+
+            document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
+       }
+
+        function q6Change(src){
+            if(src.value == "yes"){
+                 document.getElementById('q7Card').classList.add('cardStyleNotAnswer');
+                document.getElementById('q7Card').classList.remove('cardStyleAnswered');
+
+                document.getElementById('q8Card').classList.add('cardStyleNotAnswer');
+                document.getElementById('q8Card').classList.remove('cardStyleAnswered');
+
+            }else{
+                document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
+                document.getElementById('q6Card').classList.add('cardStyleAnswered');
+
+                 document.getElementById('q7Card').classList.remove('cardStyleNotAnswer');
+                document.getElementById('q7Card').classList.add('cardStyleAnswered');
+
+                document.getElementById('q8Card').classList.remove('cardStyleNotAnswer');
+                document.getElementById('q8Card').classList.add('cardStyleAnswered');
+
+               
+            }
+
+          var allAnswered = document.getElementsByClassName("cardStyleAnswered");
+        document.getElementById("questionProgress").innerHTML = allAnswered.length;
+        document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
        }
 
    </script>
@@ -45,13 +81,13 @@
        }
 
         .cardStyleAnswered{
-        border-left-color: red;
+        border-left-color: #ED1A29;
         border-left-width: 5px;
         
        }
 
        .number{
-        background-color: red;
+        background-color: #ED1A29;
         color: white;
         font-weight: bold;
 
@@ -65,7 +101,7 @@
        }
 
        .rangeLabel{
-        color:  red;
+        color:  #ED1A29;
         font-size: smaller;
        }
 
@@ -86,7 +122,7 @@
 
  input[type='range']::-webkit-slider-runnable-track {
      
-       background: red;
+       background: #ED1A29;
      
     }
 
@@ -103,7 +139,7 @@
 <body>
 
   <div class="" style="box-shadow: 2px 2px 5px grey;">
-    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #ED1A29; box-shadow: 2px 2px 5px grey;">
       <div class="container-fluid" >
         <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
         USER VOICE SURVEY (SALES)
@@ -112,7 +148,7 @@
         </a>
 
         <div>
-            <img src="https://e7.pngegg.com/pngimages/744/19/png-clipart-honda-motorcycle-logo-honda-logo-car-motorcycle-honda-cbr-series-honda-angle-text.png" width="50">
+            <img src="WingLogo.png" width="50">
         </div>
     </div>
     </nav>
@@ -211,6 +247,12 @@
     </div>
 </div>
 
+ SHOP EXPERIENCE <br/>
+        ประสบการณ์ภายในร้าน
+
+
+
+
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q4Card">
     <div class="card-body">
         <h5 class="card-title cardHeader" > 
@@ -219,7 +261,7 @@
                     <span class="badge text-bg-danger">4</span>
                 </div>
                 <div class="col-11">
-                    <div>พนักงานมีการแจ้งรายการซ่อมและประเมินค่าใช้จ่ายก่อนดำเนินการหรือไม่? <span class="requiredStar">*</span></div> 
+                    <div>ท่านมีอิสระในการเดิน เลือกชม สินค้าภายในร้าน <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -243,9 +285,6 @@
 
 
 
- PRE-SERVICE PROCESS <br/>
-        ความเข้าใจรายการซ่อม
-
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q5Card">
     <div class="card-body">
         <h5 class="card-title cardHeader" > 
@@ -254,7 +293,7 @@
                     <span class="badge text-bg-danger">5</span>
                 </div>
                 <div class="col-11">
-                    <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด<span class="requiredStar">*</span></div> 
+                    <div>การจัดวางสินค้า ภายในร้าน ทำให้สินค้าดูน่าซื้อ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -276,8 +315,11 @@
 
 
 
-ACCOMMONDATIONS & CLEANNESS <br/>
-        สิ่งอำนวยความสะดวกและความสะอาด
+
+
+ STAFF EXPERIENCE <br/>
+        ประสบการณ์ที่มีต่อพนักงานขาย
+
 
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q6Card">
     <div class="card-body">
@@ -287,18 +329,24 @@ ACCOMMONDATIONS & CLEANNESS <br/>
                     <span class="badge text-bg-danger">6</span>
                 </div>
                 <div class="col-11">
-                    <div>สิ่งอำนวยความสะดวก และความสะอาดในบริเวณที่พักลูกค้า <span class="requiredStar">*</span></div> 
+                    <div>   ท่านได้รับคำแนะนำการขับขี่ปลอดภัย เช่น การแนะนำให้ใส่หมวกกันน็อค ไม่ขับขี่เร็ว ไม่ขี่ตัดหน้า ไม่ขี่จี้ หรือ ดื่มไม่ขับ หรือไม่? <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
-                        <div class="col-10">
-                            <div class="row">
-                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
-                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                        <div class="col-10"> 
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
+                                <input type="radio" class="btn-check" name="q6" id="btnradio1" autocomplete="off"  onchange="q6Change(this)" value="yes">
+                                <label class="btn btn-outline-danger" for="btnradio1">ใช่ (ไปข้อ 7)</label>
+
+
+                                <input type="radio" class="btn-check" name="q6" id="btnradio3" autocomplete="off" onchange="q6Change(this)" value="no">
+                                <label class="btn btn-outline-danger" for="btnradio3">ไม่ (ไปข้อ 9)</label>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q6')">
+
+
+            
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q6">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q6">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -306,12 +354,6 @@ ACCOMMONDATIONS & CLEANNESS <br/>
         </h5>   
     </div>
 </div>
-
-
-
-
-AFTER SALES APPOINTMENT & INSTRUCTION <br/>
-        การนัดหมายและการชี้แจงรายละเอียดหลังการเข้ารับบริการ
 
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q7Card">
     <div class="card-body">
@@ -321,14 +363,10 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                     <span class="badge text-bg-danger">7</span>
                 </div>
                 <div class="col-11">
-                    <div>พนักงาน มีการแจ้งกำหนดเวลาซ่อมเสร็จหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <div>   คำแนะนำเกี่ยวกับการขับขี่ปลอดภัยที่ได้รับมีประโยชน์กับท่านหรือไม่ </div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
-                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
-                                <div class="col-6  right rangeLabel">มากที่สุด</div>
-                            </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
@@ -349,18 +387,35 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                     <span class="badge text-bg-danger">8</span>
                 </div>
                 <div class="col-11">
-                    <div>พนักงาน มีการชี้แจ้งรายละเอียดค่าซ่อมและค่าอะไหล่ หลังการเข้ารับบริการหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <div>   ท่านได้รับคำแนะนำหลักการขับขี่ปลอดภัยด้วยวิธีการ หรือ ช่องทางใด? </div> 
                     <br/>
                     <div class="row">
-                        <div class="col-10">
-                            <div class="row">
-                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
-                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                        <div class="col-10">    
+                             <div class="row">
+                                <div class="col-lg-6 col-sm-12">                          
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1" onchange="q8Change()">
+                                            <option>พนักงานอธิบายด้วยปากเปล่า</option>
+                                            <option>พนักงานอธิบายด้วยโบรชัวร์สมุดคู่มือการรับประกัน</option>
+                                            <option>LINE / Facebook</option>
+                                            <option>จอทีวีภายในร้าน</option>
+                                            <option>จอคอมพิวเจอร์ (คอมตั้งโต๊ะ โน้ตบุ๊ค)</option>
+                                            <option>มือถือสมาร์ทโฟน (Smartphone)</option>
+                                            <option>แทปเลต (Tablet)</option>
+                                            <option>ป้ายโฆษณาดิจิตอลที่ไม่ใช่ทีวี (Digital Signage)</option>
+                                            <option>อื่นๆ</option>
+                                        </select>
+                                  </div>
+                                </div>
+                                 <div class="col-lg-6 col-sm-12">                          
+                                   <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="ระบุ">
+                                  </div>
+                                </div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q8')">
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q8">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q8">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -368,7 +423,6 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
         </h5>   
     </div>
 </div>
-
 
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q9Card">
     <div class="card-body">
@@ -378,7 +432,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                     <span class="badge text-bg-danger">9</span>
                 </div>
                 <div class="col-11">
-                    <div> พนักงาน มีการแจ้งนัดหมายให้เข้ารับบริการในครั้งต่อไปหรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <div> พนักงานสามารถอธิบายเงื่อนไขการรับประกันคุณภาพรถใหม่ให้ท่านเข้าใจได้เป็นอย่างดี <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -407,7 +461,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                     <span class="badge text-bg-danger">10</span>
                 </div>
                 <div class="col-11">
-                    <div> หลังเข้ารับบริการ พนักงาน มีการสอบถามคุณภาพงานซ่อม ผ่านทางโทรศัพท์ ไลน์ SMS หรือช่องทางอื่นๆ หรือไม่ ? <span class="requiredStar">*</span></div> 
+                    <div> พนักงานสาธิตการใช้รถมอเตอร์ไซค์และอุปกรณ์เกี่ยวกับรถมอเตอร์ไซค์ด้วยความเอาใจใส่ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -429,10 +483,6 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
 
 
 
-
-OVERALL EXPERIENCE <br/>
-        ความพึงพอใจต่อประสบการณ์โดยรวม
-
 <div class="card w-100 mb-3 cardStyleNotAnswer" id="q11Card">
     <div class="card-body">
         <h5 class="card-title cardHeader" > 
@@ -441,7 +491,7 @@ OVERALL EXPERIENCE <br/>
                     <span class="badge text-bg-danger">11</span>
                 </div>
                 <div class="col-11">
-                    <div>ความพึงพอใจโดยรวมที่มีต่อการเข้ามาใช้บริการที่ร้าน ? <span class="requiredStar">*</span></div> 
+                    <div>พนักงานที่ร้านทำให้ท่านรู้สึกได้ว่าเป็นลูกค้าคนสำคัญ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -462,8 +512,84 @@ OVERALL EXPERIENCE <br/>
 </div>
 
 
+SALES FOLLOWUP <br/>
+        การติดตามหลังการขาย
+
+
+
+
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q12Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">12</span>
+                </div>
+                <div class="col-11">
+                    <div>ความพึงพอใจโดยรวมที่มีต่อการซื้อรถมอเตอร์ไซค์ที่ร้าน <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q12')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q12">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+OVERALL EXPERIENCE <br/>
+        ความพึงพอใจต่อประสบการณ์โดยรวม
+
+<div class="card w-100 mb-3 cardStyleNotAnswer" id="q13Card">
+    <div class="card-body">
+        <h5 class="card-title cardHeader" > 
+            <div class="row">
+                <div class="col-1 alignMiddle">
+                    <span class="badge text-bg-danger">13</span>
+                </div>
+                <div class="col-11">
+                    <div>ความพึงพอใจโดยรวมที่มีต่อการเข้ามาใช้บริการที่ร้าน ? <span class="requiredStar">*</span></div> 
+                    <br/>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6  left rangeLabel">น้อยที่สุด</div>
+                                <div class="col-6  right rangeLabel">มากที่สุด</div>
+                            </div>
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q13')">
+                        </div>
+                        <div class="col-1 alignMiddle scoreAnswer" >
+                            <span class="badge  text-bg-light" id="q13">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </h5>   
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="d-grid gap-2">
-  <button class="btn" style="background-color: red; color: white; font-weight: bold;" type="button">Submit</button>
+  <button class="btn" style="background-color: #ED1A29; color: white; font-weight: bold;" type="button">Submit</button>
  
 </div>
 
@@ -477,19 +603,19 @@ OVERALL EXPERIENCE <br/>
 <br/>
 <br/>
 
-  <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: red; box-shadow: 2px 2px 5px grey;">
+  <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #ED1A29; box-shadow: 2px 2px 5px grey;">
   
 
       <div class="container-fluid" >
         <a class="navbar-brand" style="font-weight: bold; color: white; font-size: medium;" href="#">
-       <span id="questionProgress">0</span> ใน 11 มีการตอบ
+       <span id="questionProgress">0</span> ใน 13 มีการตอบ
 
        
         </a>
 
 <div style="width: 100%; text-align: right;">
     
-    <div class="progress" role="progressbar" aria-label="Basic example"  style="width: 100%; border: solid white 2px; background-color: red">
+    <div class="progress" role="progressbar" aria-label="Basic example"  style="width: 100%; border: solid white 2px; background-color: #ED1A29">
       <div class="progress-bar" style="width: 0%; background-color: white" id="progressBar"></div>
     </div>
 </div>
