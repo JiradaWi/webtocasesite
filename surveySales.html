@@ -11,9 +11,17 @@
 
    <script type="text/javascript">
        function updateScore(value, questionNum){
-            document.getElementById(questionNum).innerHTML = value;
-            document.getElementById(questionNum+'Card').classList.remove('cardStyleNotAnswer');
-            document.getElementById(questionNum+'Card').classList.add('cardStyleAnswered');
+            // document.getElementById(questionNum).innerHTML = value;
+            var question = document.getElementById(questionNum+'Card');
+          
+            if(value != '0'){
+                question.classList.remove('cardStyleNotAnswer');
+                question.classList.add('cardStyleAnswered');
+            }else{
+                question.classList.remove('cardStyleAnswered');
+                question.classList.add('cardStyleNotAnswer');
+            }
+           
 
             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
             document.getElementById("questionProgress").innerHTML = allAnswered.length;
@@ -33,6 +41,9 @@
        }
 
         function q6Change(src){
+              document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
+                document.getElementById('q6Card').classList.add('cardStyleAnswered');
+                
             if(src.value == "yes"){
                  document.getElementById('q7Card').classList.add('cardStyleNotAnswer');
                 document.getElementById('q7Card').classList.remove('cardStyleAnswered');
@@ -41,8 +52,7 @@
                 document.getElementById('q8Card').classList.remove('cardStyleAnswered');
 
             }else{
-                document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
-                document.getElementById('q6Card').classList.add('cardStyleAnswered');
+              
 
                  document.getElementById('q7Card').classList.remove('cardStyleNotAnswer');
                 document.getElementById('q7Card').classList.add('cardStyleAnswered');
@@ -58,9 +68,38 @@
         document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
        }
 
+        function submitForm(){
+            var unanswerQ = document.getElementsByClassName("cardStyleNotAnswer");
+
+            if(unanswerQ.length != 0){
+                unanswerQ[0].scrollIntoView({
+                    behavior: 'smooth',  
+                    block: 'center',
+                    inline: 'center'
+                });
+            }else{
+                console.log('submitform here');
+            }
+
+       }
    </script>
 
    <style type="text/css">
+        :root{
+            /*--bs-danger: green;*/
+            --bs-btn-active-bg:  #ED1A29;
+            --bs-btn-color:  #ED1A29;
+            --bs-btn-border-color:  #ED1A29;
+            --bs-btn-hover-border-color: #ED1A29 ;
+            --bs-btn-active-color:  white;
+            --bs-btn-active-border-color:  #ED1A29;
+            
+            --bs-btn-active-color:  white;
+            --bs-btn-color:  white;
+            --bs-btn-disabled-color:  white;
+        }
+      
+        
         body{
             background-color: #EEEEEE;
         }
@@ -76,13 +115,13 @@
 
        .cardStyleNotAnswer{
         border-left-color: grey;
-        border-left-width: 5px;
+        border-left-width: 10px;
         
        }
 
         .cardStyleAnswered{
         border-left-color: #ED1A29;
-        border-left-width: 5px;
+        border-left-width: 10px;
         
        }
 
@@ -117,7 +156,9 @@
         vertical-align: bottom;
        }
 
-
+    .questionNumBadge{
+        background-color: #ED1A29;
+    }
 
 
  input[type='range']::-webkit-slider-runnable-track {
@@ -148,7 +189,7 @@
         </a>
 
         <div>
-            <img src="WingLogo.png" width="50">
+            <img src="https://raw.githubusercontent.com/JiradaWi/webtocasesite/main/WingLogo.png" width="60">
         </div>
     </div>
     </nav>
@@ -168,21 +209,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">1</span>
+                    <span class="badge questionNumBadge">1</span>
                 </div>
                 <div class="col-11">
                     <div>   ความรวดเร็วในการทักทาย และสอบถามความต้องการของท่านเมื่อท่านมาถึงร้าน <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q1')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q1')"> -->
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q1')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q1">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q1">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -196,21 +252,37 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">2</span>
+                    <span class="badge questionNumBadge">2</span>
                 </div>
                 <div class="col-11">
                     <div>บุคลิกภาพ กริยา มารยาท ความสุภาพ ของพนักงานที่มาต้อนรับ<span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                          <!--   <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q2')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q2')"> -->
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q2')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q2">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q2">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -224,21 +296,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">3</span>
+                    <span class="badge questionNumBadge">3</span>
                 </div>
                 <div class="col-11">
                     <div>พนักงานที่มาต้อนรับท่านมีความรู้ทั้งด้านเทคนิคและตัวสินค้า<span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q3')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q3')"> -->
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q3')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+                                        
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q3">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q3">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -258,21 +345,37 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">4</span>
+                    <span class="badge questionNumBadge">4</span>
                 </div>
                 <div class="col-11">
                     <div>ท่านมีอิสระในการเดิน เลือกชม สินค้าภายในร้าน <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q4')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q4')"> -->
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q4')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q4">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q4">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -290,21 +393,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">5</span>
+                    <span class="badge questionNumBadge">5</span>
                 </div>
                 <div class="col-11">
                     <div>การจัดวางสินค้า ภายในร้าน ทำให้สินค้าดูน่าซื้อ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q5')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q5')"> -->
+
+                                <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q5')">
+                                    <option value="0">-- โปรดเลือก --</option>
+                                    <option value="1" >1 - น้อยที่สุด</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                    <option value="6" >6</option>
+                                    <option value="7" >7</option>
+                                    <option value="8" >8</option>
+                                    <option value="9" >9</option>
+                                    <option value="10" >10 - มากที่สุด</option>
+                                </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q5">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q5">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -326,20 +444,20 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">6</span>
+                    <span class="badge questionNumBadge">6</span>
                 </div>
                 <div class="col-11">
                     <div>   ท่านได้รับคำแนะนำการขับขี่ปลอดภัย เช่น การแนะนำให้ใส่หมวกกันน็อค ไม่ขับขี่เร็ว ไม่ขี่ตัดหน้า ไม่ขี่จี้ หรือ ดื่มไม่ขับ หรือไม่? <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10"> 
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
                                 <input type="radio" class="btn-check" name="q6" id="btnradio1" autocomplete="off"  onchange="q6Change(this)" value="yes">
-                                <label class="btn btn-outline-danger" for="btnradio1">ใช่ (ไปข้อ 7)</label>
+                                <label class="btn  " for="btnradio1" style="border: solid 1px #ED1A29; ">ใช่ (ไปข้อ 7)</label>
 
 
-                                <input type="radio" class="btn-check" name="q6" id="btnradio3" autocomplete="off" onchange="q6Change(this)" value="no">
-                                <label class="btn btn-outline-danger" for="btnradio3">ไม่ (ไปข้อ 9)</label>
+                                <input type="radio" class="btn-check" name="q6" id="btnradio3" autocomplete="off" onchange="q6Change(this)" value="no" >
+                                <label class="btn  " for="btnradio3"  style="border: solid 1px #ED1A29;">ไม่ (ไปข้อ 9)</label>
                             </div>
 
 
@@ -360,17 +478,35 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">7</span>
+                    <span class="badge questionNumBadge">7</span>
                 </div>
                 <div class="col-11">
                     <div>   คำแนะนำเกี่ยวกับการขับขี่ปลอดภัยที่ได้รับมีประโยชน์กับท่านหรือไม่ </div> 
                     <br/>
                     <div class="row">
-                        <div class="col-10">
+                       <!--  <div class="col-10">
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')">
+                        </div> -->
+                         <div class="col-10">
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q7')">
+                                    <option value="0">-- โปรดเลือก --</option>
+                                    <option value="1" >1 - น้อยที่สุด</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                    <option value="6" >6</option>
+                                    <option value="7" >7</option>
+                                    <option value="8" >8</option>
+                                    <option value="9" >9</option>
+                                    <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
                         </div>
+
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q7">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q7">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -384,7 +520,7 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">8</span>
+                    <span class="badge questionNumBadge">8</span>
                 </div>
                 <div class="col-11">
                     <div>   ท่านได้รับคำแนะนำหลักการขับขี่ปลอดภัยด้วยวิธีการ หรือ ช่องทางใด? </div> 
@@ -394,7 +530,8 @@
                              <div class="row">
                                 <div class="col-lg-6 col-sm-12">                          
                                     <div class="form-group">
-                                        <select class="form-control" id="exampleFormControlSelect1" onchange="q8Change()">
+                                        <select class="form-select" id="exampleFormControlSelect1" onchange="q8Change()">
+                                            <option>-- โปรดเลือก --</option>
                                             <option>พนักงานอธิบายด้วยปากเปล่า</option>
                                             <option>พนักงานอธิบายด้วยโบรชัวร์สมุดคู่มือการรับประกัน</option>
                                             <option>LINE / Facebook</option>
@@ -429,21 +566,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">9</span>
+                    <span class="badge questionNumBadge">9</span>
                 </div>
                 <div class="col-11">
                     <div> พนักงานสามารถอธิบายเงื่อนไขการรับประกันคุณภาพรถใหม่ให้ท่านเข้าใจได้เป็นอย่างดี <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q9')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q9')"> -->
+
+                           <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q9')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q9">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q9">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -458,21 +610,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">10</span>
+                    <span class="badge questionNumBadge">10</span>
                 </div>
                 <div class="col-11">
                     <div> พนักงานสาธิตการใช้รถมอเตอร์ไซค์และอุปกรณ์เกี่ยวกับรถมอเตอร์ไซค์ด้วยความเอาใจใส่ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q10')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q10')"> -->
+
+                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q10')">
+                                <option value="0">-- โปรดเลือก --</option>
+                                <option value="1" >1 - น้อยที่สุด</option>
+                                <option value="2" >2</option>
+                                <option value="3" >3</option>
+                                <option value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option value="10" >10 - มากที่สุด</option>
+                            </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q10">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q10">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -488,21 +655,36 @@
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">11</span>
+                    <span class="badge questionNumBadge">11</span>
                 </div>
                 <div class="col-11">
                     <div>พนักงานที่ร้านทำให้ท่านรู้สึกได้ว่าเป็นลูกค้าคนสำคัญ <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q11')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q11')"> -->
+
+                                <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q11')">
+                                    <option value="0">-- โปรดเลือก --</option>
+                                    <option value="1" >1 - น้อยที่สุด</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                    <option value="6" >6</option>
+                                    <option value="7" >7</option>
+                                    <option value="8" >8</option>
+                                    <option value="9" >9</option>
+                                    <option value="10" >10 - มากที่สุด</option>
+                                </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q11">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q11">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -524,21 +706,36 @@ SALES FOLLOWUP <br/>
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">12</span>
+                    <span class="badge questionNumBadge">12</span>
                 </div>
                 <div class="col-11">
                     <div>ความพึงพอใจโดยรวมที่มีต่อการซื้อรถมอเตอร์ไซค์ที่ร้าน <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q12')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q12')"> -->
+
+                               <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q12')">
+                                    <option value="0">-- โปรดเลือก --</option>
+                                    <option value="1" >1 - น้อยที่สุด</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                    <option value="6" >6</option>
+                                    <option value="7" >7</option>
+                                    <option value="8" >8</option>
+                                    <option value="9" >9</option>
+                                    <option value="10" >10 - มากที่สุด</option>
+                                </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q12">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q12">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -556,21 +753,36 @@ OVERALL EXPERIENCE <br/>
         <h5 class="card-title cardHeader" > 
             <div class="row">
                 <div class="col-1 alignMiddle">
-                    <span class="badge text-bg-danger">13</span>
+                    <span class="badge questionNumBadge">13</span>
                 </div>
                 <div class="col-11">
                     <div>ความพึงพอใจโดยรวมที่มีต่อการเข้ามาใช้บริการที่ร้าน ? <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-6  left rangeLabel">น้อยที่สุด</div>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
-                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q13')">
+                            <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q13')"> -->
+
+                               <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q13')">
+                                    <option value="0">-- โปรดเลือก --</option>
+                                    <option value="1" >1 - น้อยที่สุด</option>
+                                    <option value="2" >2</option>
+                                    <option value="3" >3</option>
+                                    <option value="4" >4</option>
+                                    <option value="5" >5</option>
+                                    <option value="6" >6</option>
+                                    <option value="7" >7</option>
+                                    <option value="8" >8</option>
+                                    <option value="9" >9</option>
+                                    <option value="10" >10 - มากที่สุด</option>
+                                </select>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
-                            <span class="badge  text-bg-light" id="q13">5</span>
+                            <!-- <span class="badge  text-bg-light" id="q13">5</span> -->
                         </div>
                     </div>
                 </div>
@@ -589,7 +801,7 @@ OVERALL EXPERIENCE <br/>
 
 
 <div class="d-grid gap-2">
-  <button class="btn" style="background-color: #ED1A29; color: white; font-weight: bold;" type="button">Submit</button>
+  <button class="btn" style="background-color: #ED1A29; color: white; font-weight: bold;" type="button" onchange="submitForm()">Submit</button>
  
 </div>
 
