@@ -710,7 +710,7 @@ SALES FOLLOWUP <br/>
                     <span class="badge questionNumBadge">12</span>
                 </div>
                 <div class="col-11">
-                    <div>ความพึงพอใจโดยรวมที่มีต่อการซื้อรถมอเตอร์ไซค์ที่ร้าน <span class="requiredStar">*</span></div> 
+                    <div>ทางร้านมีการติดตามการใช้งานของท่านหลังซื้อรถใหม่ หรือไม่? <span class="requiredStar">*</span></div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -720,19 +720,14 @@ SALES FOLLOWUP <br/>
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q12')"> -->
 
-                               <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q12')">
-                                    <option value="0">-- โปรดเลือก --</option>
-                                    <option value="1" >1 - น้อยที่สุด</option>
-                                    <option value="2" >2</option>
-                                    <option value="3" >3</option>
-                                    <option value="4" >4</option>
-                                    <option value="5" >5</option>
-                                    <option value="6" >6</option>
-                                    <option value="7" >7</option>
-                                    <option value="8" >8</option>
-                                    <option value="9" >9</option>
-                                    <option value="10" >10 - มากที่สุด</option>
-                                </select>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q12" id="q12yes" autocomplete="off"  onclick="updateScore(this, 'q12')" value="yes">
+                                <label class="btn  " for="q12yes" style="border: solid 1px #ED1A29; ">ใช่</label>
+
+
+                                <input type="radio" class="btn-check" name="q12" id="q12no" autocomplete="off" onclick="updateScore(this, 'q12')" value="no" >
+                                <label class="btn  " for="q12no"  style="border: solid 1px #ED1A29;">ไม่</label>
+                            </div>
 
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
