@@ -43,9 +43,41 @@
 
        }
 
+       function q4Change(src){
+            document.getElementById('q4Card').classList.remove('cardStyleNotAnswer');
+            document.getElementById('q4Card').classList.add('cardStyleAnswered');
+                
+            if(src.value == "yes"){
+                document.getElementById('q5Card').classList.add('cardStyleNotAnswer');
+                document.getElementById('q5Card').classList.remove('cardStyleAnswered');
+
+            }else{
+                document.getElementById('q5Card').classList.remove('cardStyleNotAnswer');
+                document.getElementById('q5Card').classList.add('cardStyleAnswered');         
+            }
+
+            var allAnswered = document.getElementsByClassName("cardStyleAnswered");
+            document.getElementById("questionProgress").innerHTML = allAnswered.length;
+            document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
+       }
+
    </script>
 
    <style type="text/css">
+        :root{
+            /*--bs-danger: green;*/
+            --bs-btn-active-bg:  #ED1A29;
+            --bs-btn-color:  #ED1A29;
+            --bs-btn-border-color:  #ED1A29;
+            --bs-btn-hover-border-color: #ED1A29 ;
+            --bs-btn-active-color:  white;
+            --bs-btn-active-border-color:  #ED1A29;
+            
+            --bs-btn-active-color:  white;
+            --bs-btn-color:  white;
+            --bs-btn-disabled-color:  white;
+        }
+
         body{
             background-color: #EEEEEE;
         }
@@ -68,7 +100,7 @@
         .cardStyleAnswered{
         border-left-color: #ED1A29;
         border-left-width: 10px;
-        
+
        }
 
        .number{
@@ -104,7 +136,8 @@
 
 
         .questionNumBadge{
-            background-color: #ED1A29;
+            background-color: #EEEEEE;
+            color: black;
         }
 
 
@@ -293,7 +326,7 @@
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q4')"> -->
 
-                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q4')">
+                          <!--   <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q4')">
                                 <option value="0">-- โปรดเลือก --</option>
                                 <option value="1" >1 - น้อยที่สุด</option>
                                 <option value="2" >2</option>
@@ -305,7 +338,16 @@
                                 <option value="8" >8</option>
                                 <option value="9" >9</option>
                                 <option value="10" >10 - มากที่สุด</option>
-                            </select>
+                            </select> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q4" id="q4yes" autocomplete="off"  onchange="q4Change(this)" value="yes">
+                                <label class="btn  " for="q4yes" style="border: solid 1px #ED1A29; ">ใช่ (ไปข้อ 5)</label>
+
+
+                                <input type="radio" class="btn-check" name="q4" id="q4no" autocomplete="off" onchange="q4Change(this)" value="no" >
+                                <label class="btn  " for="q4no"  style="border: solid 1px #ED1A29;">ไม่ (ไปข้อ 6)</label>
+                            </div>
+
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
                             <!-- <span class="badge  text-bg-light" id="q4">5</span> -->
@@ -332,7 +374,7 @@
                     <span class="badge questionNumBadge">5</span>
                 </div>
                 <div class="col-11">
-                    <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด<span class="requiredStar">*</span></div> 
+                    <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด</div> 
                     <br/>
                     <div class="row">
                         <div class="col-10">
@@ -436,7 +478,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')"> -->
 
-                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q7')">
+                            <!-- <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q7')">
                                 <option value="0">-- โปรดเลือก --</option>
                                 <option value="1" >1 - น้อยที่สุด</option>
                                 <option value="2" >2</option>
@@ -448,7 +490,16 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <option value="8" >8</option>
                                 <option value="9" >9</option>
                                 <option value="10" >10 - มากที่สุด</option>
-                            </select>
+                            </select> -->
+
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q7" id="q7yes" autocomplete="off"  onclick="updateScore(this, 'q7')" value="yes">
+                                <label class="btn  " for="q7yes" style="border: solid 1px #ED1A29; ">ใช่</label>
+
+
+                                <input type="radio" class="btn-check" name="q7" id="q7no" autocomplete="off" onclick="updateScore(this, 'q7')" value="no" >
+                                <label class="btn  " for="q7no"  style="border: solid 1px #ED1A29;">ไม่</label>
+                            </div>
 
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
@@ -478,7 +529,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q8')"> -->
-                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q8')">
+                            <!-- <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q8')">
                                 <option value="0">-- โปรดเลือก --</option>
                                 <option value="1" >1 - น้อยที่สุด</option>
                                 <option value="2" >2</option>
@@ -490,7 +541,15 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <option value="8" >8</option>
                                 <option value="9" >9</option>
                                 <option value="10" >10 - มากที่สุด</option>
-                            </select>
+                            </select> -->
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q8" id="q8yes" autocomplete="off"  onclick="updateScore(this, 'q8')" value="yes">
+                                <label class="btn  " for="q8yes" style="border: solid 1px #ED1A29; ">ใช่</label>
+
+
+                                <input type="radio" class="btn-check" name="q8" id="q8no" autocomplete="off" onclick="updateScore(this, 'q8')" value="no" >
+                                <label class="btn  " for="q8no"  style="border: solid 1px #ED1A29;">ไม่</label>
+                            </div>
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
                             <!-- <span class="badge  text-bg-light" id="q8">5</span> -->
@@ -520,7 +579,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q9')"> -->
-                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q9')">
+                            <!-- <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q9')">
                                 <option value="0">-- โปรดเลือก --</option>
                                 <option value="1" >1 - น้อยที่สุด</option>
                                 <option value="2" >2</option>
@@ -532,7 +591,16 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <option value="8" >8</option>
                                 <option value="9" >9</option>
                                 <option value="10" >10 - มากที่สุด</option>
-                            </select>
+                            </select> -->
+
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q9" id="q9yes" autocomplete="off"  onclick="updateScore(this, 'q9')" value="yes">
+                                <label class="btn  " for="q9yes" style="border: solid 1px #ED1A29; ">ใช่</label>
+
+
+                                <input type="radio" class="btn-check" name="q9" id="q9no" autocomplete="off" onclick="updateScore(this, 'q9')" value="no" >
+                                <label class="btn  " for="q9no"  style="border: solid 1px #ED1A29;">ไม่</label>
+                            </div>
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
                             <!-- <span class="badge  text-bg-light" id="q9">5</span> -->
@@ -562,7 +630,7 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <div class="col-6  right rangeLabel">มากที่สุด</div>
                             </div>
                             <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q10')"> -->
-                            <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q10')">
+                            <!-- <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q10')">
                                 <option value="0">-- โปรดเลือก --</option>
                                 <option value="1" >1 - น้อยที่สุด</option>
                                 <option value="2" >2</option>
@@ -574,7 +642,16 @@ AFTER SALES APPOINTMENT & INSTRUCTION <br/>
                                 <option value="8" >8</option>
                                 <option value="9" >9</option>
                                 <option value="10" >10 - มากที่สุด</option>
-                            </select>
+                            </select> -->
+
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; color: #ED1A29">
+                                <input type="radio" class="btn-check" name="q10" id="q10yes" autocomplete="off"  onclick="updateScore(this, 'q10')" value="yes">
+                                <label class="btn  " for="q10yes" style="border: solid 1px #ED1A29; ">ใช่</label>
+
+
+                                <input type="radio" class="btn-check" name="q10" id="q10no" autocomplete="off" onclick="updateScore(this, 'q10')" value="no" >
+                                <label class="btn  " for="q10no"  style="border: solid 1px #ED1A29;">ไม่</label>
+                            </div>
                         </div>
                         <div class="col-1 alignMiddle scoreAnswer" >
                             <!-- <span class="badge  text-bg-light" id="q10">5</span> -->
