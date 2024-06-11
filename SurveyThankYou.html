@@ -34,6 +34,44 @@
    		}
    </style>
 	<title></title>
+
+	<script runat="server">
+	    Platform.Load("Core","1.1.1");
+	    try {
+	</script>
+
+	%%[
+	    Var @deName, @type, @key, @q1, @q2, @q3, @q4, @q4, @q5, @q6, @q7, @q7, @8, @q9, @q10, @q11, @q12
+
+	    Set @deName = "SurveyResult"
+	    Set @type = QueryParameter("questionnaireType")
+	    Set @key = QueryParameter("uniqueKey")
+	    Set @q1 = QueryParameter("q1")
+	    Set @q2 = QueryParameter("q2")
+	    Set @q3 = QueryParameter("q3")
+	    Set @q4 = QueryParameter("q4")
+	    Set @q5 = QueryParameter("q5")
+	    Set @q6 = QueryParameter("q6")
+	    Set @q7 = QueryParameter("q7")
+	    Set @q8 = QueryParameter("q8")
+	    Set @q9 = QueryParameter("q9")
+	    Set @q10 = QueryParameter("q10")
+	    Set @q11 = QueryParameter("q11")
+	    Set @q12 = QueryParameter("q12")
+	    Set @q13 = QueryParameter("q13")
+
+	    If @key != "" Then
+	    	UpsertData(@deName, 1, "UniqueKey", @key, "Type", @type, "q1", @q1, "q2", @q2, "q3", @q3, "q4", @q4, "q5", @q5, "q6", @q6, "q7", @q7, "q8", @q8, "q9", @q9, "q10", @q10, "q11", @q11, "q12", @q12, "q13", @q13)
+	    EndIf
+	]%%
+
+	<script runat="server">
+	    }
+	    catch (e) {
+	        Write("<b>Error Message:</b> " + Stringify(e.message) + "<br><br><b>Description:</b> " + Stringify(e.description));
+	    }
+	</script>
+
 </head>
 <body>
 	<div id="background">
