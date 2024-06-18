@@ -44,33 +44,64 @@
             document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
        }
 
+        function lockQuestion(questionNum){
+            console.log('lock q: '+questionNum);
+            var questionName = questionNum+'Card'; 
+            document.getElementById(questionName).classList.add('cardStyleAnswered');
+            document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
+            document.getElementById(questionName).style.backgroundColor = '#EEEEEE';
+            
+            document.getElementById(questionNum+'input').disabled  = 'true';
+            
+            if(questionNum == 'q8'){
+                document.getElementById('q8_1input').disabled  = 'true';
+                document.getElementById('q8_1input').value = '';
+            }
+             
+        }
+
+        function enableQuestion(questionNum){
+            var questionName = questionNum+'Card'; 
+
+            //if already answered, no changing card style back to unanswered
+            if(document.getElementById(questionNum+'input').value != '0'){
+                document.getElementById(questionName).classList.add('cardStyleAnswered');
+                document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
+            }else{
+                document.getElementById(questionName).classList.add('cardStyleNotAnswer');
+                document.getElementById(questionName).classList.remove('cardStyleAnswered');
+               
+            }
+
+            document.getElementById(questionNum+'input').removeAttribute('disabled');
+            document.getElementById(questionName).style.backgroundColor = '#FFFFFF';
+
+            if(questionNum == 'q8'){
+                document.getElementById('q8_1input').removeAttribute('disabled');
+            }
+        }
+
         function q6Change(src){
-              document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
-                document.getElementById('q6Card').classList.add('cardStyleAnswered');
+            console.log('q6Change');
+            document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
+            document.getElementById('q6Card').classList.add('cardStyleAnswered');
                 
             if(src.value == "yes"){
-                 document.getElementById('q7Card').classList.add('cardStyleNotAnswer');
-                document.getElementById('q7Card').classList.remove('cardStyleAnswered');
-
-                document.getElementById('q8Card').classList.add('cardStyleNotAnswer');
-                document.getElementById('q8Card').classList.remove('cardStyleAnswered');
-
-            }else{
+                enableQuestion('q7');
+                enableQuestion('q8');
               
-
-                 document.getElementById('q7Card').classList.remove('cardStyleNotAnswer');
-                document.getElementById('q7Card').classList.add('cardStyleAnswered');
-
-                document.getElementById('q8Card').classList.remove('cardStyleNotAnswer');
-                document.getElementById('q8Card').classList.add('cardStyleAnswered');
-
-               
+            }else{                
+                lockQuestion('q7');
+                lockQuestion('q8');
             }
 
             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
             document.getElementById("questionProgress").innerHTML = allAnswered.length;
             document.getElementById("progressBar").style.width = (allAnswered.length/13) * 100 + '%';
         }
+
+
+     
 
         function submitForm(){
             var unanswerQ = document.getElementsByClassName("cardStyleNotAnswer");
@@ -496,8 +527,8 @@
                             </div> -->
                              <div class="col-10">
 
-                                <select class="form-select" id="exampleFormControlSelect1"  name="q7" onchange="updateScore(this.value, 'q7')">
-                                        <option value="0">-- โปรดเลือก --</option>
+                                <select class="form-select" id="q7input"  name="q7" onchange="updateScore(this.value, 'q7')">
+                                        <option value="0" id="q7default">-- โปรดเลือก --</option>
                                         <option value="1" >1 - น้อยที่สุด</option>
                                         <option value="2" >2</option>
                                         <option value="3" >3</option>
@@ -537,23 +568,23 @@
                                  <div class="row">
                                     <div class="col-lg-6 col-sm-12">                          
                                         <div class="form-group">
-                                            <select class="form-select" id="exampleFormControlSelect1" name="q8" onchange="q8Change()">
-                                                <option>-- โปรดเลือก --</option>
-                                                <option>พนักงานอธิบายด้วยปากเปล่า</option>
-                                                <option>พนักงานอธิบายด้วยโบรชัวร์สมุดคู่มือการรับประกัน</option>
-                                                <option>LINE / Facebook</option>
-                                                <option>จอทีวีภายในร้าน</option>
-                                                <option>จอคอมพิวเจอร์ (คอมตั้งโต๊ะ โน้ตบุ๊ค)</option>
-                                                <option>มือถือสมาร์ทโฟน (Smartphone)</option>
-                                                <option>แทปเลต (Tablet)</option>
-                                                <option>ป้ายโฆษณาดิจิตอลที่ไม่ใช่ทีวี (Digital Signage)</option>
-                                                <option>อื่นๆ</option>
+                                            <select class="form-select" id="q8input" name="q8" onchange="q8Change()">
+                                                <option  id="q8default" value="0">-- โปรดเลือก --</option>
+                                                <option value="พนักงานอธิบายด้วยปากเปล่า" >พนักงานอธิบายด้วยปากเปล่า</option>
+                                                <option value="พนักงานอธิบายด้วยโบรชัวร์สมุดคู่มือการรับประกัน" >พนักงานอธิบายด้วยโบรชัวร์สมุดคู่มือการรับประกัน</option>
+                                                <option value="LINE / Facebook" >LINE / Facebook</option>
+                                                <option value="จอทีวีภายในร้าน" >จอทีวีภายในร้าน</option>
+                                                <option value="จอคอมพิวเจอร์ (คอมตั้งโต๊ะ โน้ตบุ๊ค)" >จอคอมพิวเจอร์ (คอมตั้งโต๊ะ โน้ตบุ๊ค)</option>
+                                                <option value="มือถือสมาร์ทโฟน (Smartphone)" >มือถือสมาร์ทโฟน (Smartphone)</option>
+                                                <option value="แทปเลต (Tablet)" >แทปเลต (Tablet)</option>
+                                                <option value="ป้ายโฆษณาดิจิตอลที่ไม่ใช่ทีวี (Digital Signage)" >ป้ายโฆษณาดิจิตอลที่ไม่ใช่ทีวี (Digital Signage)</option>
+                                                <option value="อื่นๆ" >อื่นๆ</option>
                                             </select>
                                       </div>
                                     </div>
                                      <div class="col-lg-6 col-sm-12">                          
                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="ระบุ">
+                                            <input type="text" class="form-control" placeholder="ระบุ" name="q8_1" id="q8_1input">
                                       </div>
                                     </div>
                                 </div>

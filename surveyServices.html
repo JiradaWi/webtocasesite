@@ -32,34 +32,58 @@
 
        }
 
-       function submitForm(){
-        var unanswerQ = document.getElementsByClassName("cardStyleNotAnswer");
+        function submitForm(){
+            var unanswerQ = document.getElementsByClassName("cardStyleNotAnswer");
 
-        if(unanswerQ.length != 0){
-            unanswerQ[0].scrollIntoView({
-                behavior: 'smooth',  
-                block: 'center',
-                inline: 'center'
-            });
-        }else{
-            console.log('submitform here');
-            document.getElementById("surveyForm").submit();
+            if(unanswerQ.length != 0){
+                unanswerQ[0].scrollIntoView({
+                    behavior: 'smooth',  
+                    block: 'center',
+                    inline: 'center'
+                });
+            }else{
+                console.log('submitform here');
+                document.getElementById("surveyForm").submit();
 
+            }
         }
 
-       }
+        function lockQuestion(questionNum){
+            console.log('lock q: '+questionNum);
+            var questionName = questionNum+'Card'; 
+            document.getElementById(questionName).classList.add('cardStyleAnswered');
+            document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
+            document.getElementById(questionName).style.backgroundColor = '#EEEEEE';
+            
+            document.getElementById(questionNum+'input').disabled  = 'true';             
+        }
 
-       function q5Change(src){
+        function enableQuestion(questionNum){
+            var questionName = questionNum+'Card'; 
+
+            //if already answered, no changing card style back to unanswered
+            if(document.getElementById(questionNum+'input').value != '0'){
+                document.getElementById(questionName).classList.add('cardStyleAnswered');
+                document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
+            }else{
+                document.getElementById(questionName).classList.add('cardStyleNotAnswer');
+                document.getElementById(questionName).classList.remove('cardStyleAnswered');
+               
+            }
+
+            document.getElementById(questionNum+'input').removeAttribute('disabled');
+            document.getElementById(questionName).style.backgroundColor = '#FFFFFF';
+        }
+
+        function q5Change(src){
             document.getElementById('q5Card').classList.remove('cardStyleNotAnswer');
             document.getElementById('q5Card').classList.add('cardStyleAnswered');
                 
             if(src.value == "yes"){
-                document.getElementById('q6Card').classList.add('cardStyleNotAnswer');
-                document.getElementById('q6Card').classList.remove('cardStyleAnswered');
+                enableQuestion('q6');
 
             }else{
-                document.getElementById('q6Card').classList.remove('cardStyleNotAnswer');
-                document.getElementById('q6Card').classList.add('cardStyleAnswered');         
+                lockQuestion('q6'); 
             }
 
             var allAnswered = document.getElementsByClassName("cardStyleAnswered");
@@ -431,7 +455,7 @@
                                     <div class="col-6  right rangeLabel">มากที่สุด</div>
                                 </div>
                                 <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q5')"> -->
-                                <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q6')" name="q6">
+                                <select class="form-select" id="q6input"  onchange="updateScore(this.value, 'q6')" name="q6">
                                     <option value="0">-- โปรดเลือก --</option>
                                     <option value="1" >1 - น้อยที่สุด</option>
                                     <option value="2" >2</option>
@@ -477,7 +501,7 @@
                                     <div class="col-6  right rangeLabel">มากที่สุด</div>
                                 </div>
                                 <input type="range" class="form-range" min="0" max="10" step="1" id="customRange3" onchange="updateScore(this.value, 'q7')"> -->
-                                <select class="form-select" id="exampleFormControlSelect1"  onchange="updateScore(this.value, 'q7')" name="q7">
+                                <select class="form-select" id="q7input"  onchange="updateScore(this.value, 'q7')" name="q7">
                                     <option value="0">-- โปรดเลือก --</option>
                                     <option value="1" >1 - น้อยที่สุด</option>
                                     <option value="2" >2</option>
