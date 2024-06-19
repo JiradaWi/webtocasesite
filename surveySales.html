@@ -47,11 +47,11 @@
         function lockQuestion(questionNum){
             console.log('lock q: '+questionNum);
             var questionName = questionNum+'Card'; 
-            document.getElementById(questionName).classList.add('cardStyleAnswered');
-            document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
-            document.getElementById(questionName).style.backgroundColor = '#EEEEEE';
-            document.getElementById(questionName).style.color = 'grey';
 
+            document.getElementById(questionName).classList.add('cardStyleSkip');
+            document.getElementById(questionName).classList.remove('cardStyleAnswered');
+            document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
+            
             document.getElementById(questionNum + 'badge').style.color = 'grey';
             document.getElementById(questionNum+'input').disabled  = 'true';
             document.getElementById(questionNum+'input').style.color  = 'grey';  
@@ -67,6 +67,8 @@
         function enableQuestion(questionNum){
             var questionName = questionNum+'Card'; 
 
+            document.getElementById(questionName).classList.remove('cardStyleSkip');
+            
             //if already answered, no changing card style back to unanswered
             if(document.getElementById(questionNum+'input').value != '0'){
                 document.getElementById(questionName).classList.add('cardStyleAnswered');
@@ -163,10 +165,16 @@
         }
 
         .cardStyleAnswered{
-        border-left-color: #ED1A29;
-        border-left-width: 10px;
-        
-       }
+            border-left-color: #ED1A29;
+            border-left-width: 10px;
+        }
+
+        .cardStyleSkip{
+            background-color: #EEEEEE;
+            color: grey;
+            border-left-color: lightgrey;
+            border-left-width: 10px;
+        }
 
         .number{
             background-color: #ED1A29;
