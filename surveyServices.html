@@ -54,6 +54,10 @@
             document.getElementById(questionName).classList.add('cardStyleAnswered');
             document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
             document.getElementById(questionName).style.backgroundColor = '#EEEEEE';
+            document.getElementById(questionName).style.color = 'grey';
+
+            document.getElementById(questionNum + 'badge').style.color = 'grey';
+            document.getElementById(questionNum+'input').style.color  = 'grey';  
             
             document.getElementById(questionNum+'input').disabled  = 'true';             
         }
@@ -73,6 +77,9 @@
 
             document.getElementById(questionNum+'input').removeAttribute('disabled');
             document.getElementById(questionName).style.backgroundColor = '#FFFFFF';
+            document.getElementById(questionName).style.color = 'black';
+            document.getElementById(questionNum + 'badge').style.color = 'black';
+            document.getElementById(questionNum+'input').style.color  = 'black';  
         }
 
         function q5Change(src){
@@ -443,7 +450,7 @@
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">6</span>
+                        <span class="badge questionNumBadge" id="q6badge">6</span>
                     </div>
                     <div class="col-11">
                         <div>   ท่านเข้าใจการแจ้งรายการซ่อมและประเมินค่าใช้จ่าย ก่อน ดำเนินการในระดับใด</div> 

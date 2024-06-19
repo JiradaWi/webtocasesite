@@ -50,8 +50,12 @@
             document.getElementById(questionName).classList.add('cardStyleAnswered');
             document.getElementById(questionName).classList.remove('cardStyleNotAnswer');
             document.getElementById(questionName).style.backgroundColor = '#EEEEEE';
-            
+            document.getElementById(questionName).style.color = 'grey';
+
+            document.getElementById(questionNum + 'badge').style.color = 'grey';
             document.getElementById(questionNum+'input').disabled  = 'true';
+            document.getElementById(questionNum+'input').style.color  = 'grey';  
+
             
             if(questionNum == 'q8'){
                 document.getElementById('q8_1input').disabled  = 'true';
@@ -75,6 +79,9 @@
 
             document.getElementById(questionNum+'input').removeAttribute('disabled');
             document.getElementById(questionName).style.backgroundColor = '#FFFFFF';
+              document.getElementById(questionName).style.color = 'black';
+            document.getElementById(questionNum + 'badge').style.color = 'black';
+            document.getElementById(questionNum+'input').style.color  = 'black';  
 
             if(questionNum == 'q8'){
                 document.getElementById('q8_1input').removeAttribute('disabled');
@@ -516,7 +523,7 @@
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">7</span>
+                        <span class="badge questionNumBadge" id="q7badge" >7</span>
                     </div>
                     <div class="col-11">
                         <div>   คำแนะนำเกี่ยวกับการขับขี่ปลอดภัยที่ได้รับมีประโยชน์กับท่านหรือไม่ </div> 
@@ -558,7 +565,7 @@
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">8</span>
+                        <span class="badge questionNumBadge" id="q8badge">8</span>
                     </div>
                     <div class="col-11">
                         <div>   ท่านได้รับคำแนะนำหลักการขับขี่ปลอดภัยด้วยวิธีการ หรือ ช่องทางใด? </div> 
