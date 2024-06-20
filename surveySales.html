@@ -9,9 +9,57 @@
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <script runat="server">
+        Platform.Load("Core","1.1.1");
+        try {
+        </script>
+
+        %%[
+        Var @uniqueKey, @row, @contactid, @purchaseDateTime, @purchaseDate
+
+        Set @contactid =  QueryParameter("contactid")
+        Set @purchaseDateTime = QueryParameter("purchasedate")
+        Set @purchaseDate = Substring(@purchaseDateTime, 1, Subtract( IndexOf( @purchaseDateTime, 'T'), 1))
+        Set @uniqueKey = CONCAT(@contactid, @purchaseDate)
+
+        Set @row = LookupRows("SurveyResult","UniqueKey", @uniqueKey) 
+
+        If Rowcount(@row) > 0 THEN
+            REDIRECT("https://cloud.thaihondamarketing.com/ThankYou")
+        ENDIF
+
+        
+        ]%%
+
+        <script runat="server">
+        }
+        catch (e) {
+            Write("<b>Error Message:</b> " + Stringify(e.message) + "<br><br><b>Description:</b> " + Stringify(e.description));
+        }
+    </script>
+
    <script type="text/javascript">
-        function onload(){
-            document.getElementById('uniqueKey').value = Date.now();
+        function onload(){            
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            const contactid = urlParams.get('contactid');
+            const purchaseDate = urlParams.get('purchasedate');
+            const dealerid =  urlParams.get('dealerid');
+
+            var dateSplit = purchaseDate.split('T');
+            var date = '';
+            if(dateSplit[0]){
+                date = dateSplit[0];
+            }
+
+            //insert key = contact id + purchase date
+            var uniqueKey = contactid+date;
+
+
+            document.getElementById('uniqueKey').value = uniqueKey;
+            document.getElementById('contactid').value = contactid;
+            document.getElementById('dealerid').value = dealerid;
         }
 
         function updateScore(value, questionNum){
@@ -252,6 +300,8 @@
  <form action="https://cloud.thaihondamarketing.com/ThankYou" target="_self" id="surveyForm">
     <input type="hidden" name="questionnaireType" value="sales">
     <input type="hidden" name="uniqueKey" id="uniqueKey">
+    <input type="hidden" name="contactid" id="contactid">
+    <input type="hidden" name="dealerid" id="dealerid">
 
     <div style="padding: 2%;  font-weight: bold;">
         PRE-SALES PROCESS <br/>
