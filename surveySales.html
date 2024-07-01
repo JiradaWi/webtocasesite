@@ -20,7 +20,7 @@
         Set @contactid =  QueryParameter("contactid")
         Set @purchaseDateTime = QueryParameter("purchasedate")
         Set @purchaseDate = Substring(@purchaseDateTime, 1, Subtract( IndexOf( @purchaseDateTime, 'T'), 1))
-        Set @uniqueKey = CONCAT(@contactid, @purchaseDate)
+        Set @uniqueKey = CONCAT("sales", @contactid, @purchaseDate)
 
         Set @row = LookupRows("SurveyResult","UniqueKey", @uniqueKey) 
 
@@ -54,7 +54,7 @@
             }
 
             //insert key = contact id + purchase date
-            var uniqueKey = contactid+date;
+            var uniqueKey = 'sales' + contactid + date;
 
 
             document.getElementById('uniqueKey').value = uniqueKey;
