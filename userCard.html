@@ -11,10 +11,359 @@
 
    
    <script type="text/javascript">
-        function onload(){            
+        function onload(){
+            const searchParams = new URLSearchParams(window.location.search);
+
+            var modelType = '';
+
+            if( searchParams.has('modelType') ){
+                modelType = searchParams.get('modelType');     
+            }           
            
+           generateBikeBuyingReason(modelType); //q15
+           generateBikeinfo(modelType); //q19
+           generateReasonNotToBuy(modelType);
+           generateDistance(modelType); //q30
+           generateBikeUsage(modelType); //q31
+           generateBikeTopReason(modelType)//q32
+
         }
 
+        function generateBikeBuyingReason(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('ชอบดีไซน์ รูปทรง (Nice design)');
+                picklist.push('เป็นรถออกใหม่ / รุ่นใหม่ (Newness)');
+                picklist.push('แตกต่าง ไม่เหมือนใคร (Unique)');
+                picklist.push('แต่งแล้วสวย / แต่งสนุก (nice modify)');
+                picklist.push('ขนาดกะทัดรัด (compact size)');
+                picklist.push('น้ำหนักเบา (light weight)');
+                picklist.push('ท่านั่งดี / ขาถึงพื้น (good riding position)');
+                picklist.push('อัตราเร่งดี (good acceleration)');
+                picklist.push('ความเร็วสูงสุดดี (good V MAX)');
+                picklist.push('ขับขี่ง่าย (easy riding)');
+                picklist.push('ขนของ บรรทุกของได้ดี (good loading)');
+                picklist.push('ทนทาน (Durable)');
+                picklist.push('เป็นยี่ห้อที่ชอบ (like brand)');
+                picklist.push('มีคนใช้เยอะ / ฮิต (popular)');
+                picklist.push('มีอุปกรณ์ความปลอดภัย (Safety equipment)');
+                picklist.push('มีเทคโนโลยีใหม่ ทันสมัย (New technology)');
+                picklist.push('มีอุปกรณ์ที่ต้องการครบ (Full equipment)');
+                picklist.push('ราคาเหมาะสม (Reasonable price)');
+                picklist.push('มีโปรโมชั่น / ของแถม (promotion)');
+                picklist.push('บริการหลังการขายดี (good after service)');
+                picklist.push('อายุรับประกันยาวนาน (long warrantee)');
+                picklist.push('ศูนย์บริการเยอะ (many service shop)');
+                picklist.push('ประหยัดน้ำมัน (save fuel)');
+                picklist.push('มลภาวะน้อย (less pollution)');
+                picklist.push('ประหยัดกว่ารถน้ำมัน (เฉพาะรถไฟฟ้า)');
+            }else if(modelType == 'BW'){
+                picklist.push('ชอบดีไซน์ รูปทรง (Nice design)');
+                picklist.push('เป็นรถออกใหม่ / รุ่นใหม่ (Newness)');
+                picklist.push('ขนาดรถเหมาะสม (Good size)');
+                picklist.push('น้ำหนักเบา (light weight)');
+                picklist.push('ท่านั่งดี / ขาถึงพื้น (good riding position)');
+                picklist.push('อัตราเร่งดี (good acceleration)');
+                picklist.push('ความเร็วสูงสุดดี (good V MAX)');
+                picklist.push('ขับขี่ง่าย (easy riding)');
+                picklist.push('เป็นยี่ห้อที่ชอบ (like brand)');
+                picklist.push('มีอุปกรณ์ที่ต้องการครบ (Full equipment)');
+                picklist.push('เป็นรถมีตำนาน/ชื่อเสียง (Legend/Good reputation)');
+                picklist.push('ดูเท่/เด่นกว่าคนอื่น (Cool/Outstanding)');
+                picklist.push('ราคาเหมาะสม (Reasonable price)');
+                picklist.push('มีโปรโมชั่น / ของแถม (promotion)');
+                picklist.push('บริการหลังการขายดี (good after service)');
+                picklist.push('มีกิจกรรมพิเศษ (Having special event)');
+                picklist.push('มีกลุ่ม/สังคม ที่มีรถเหมือนกัน (Community)');
+            }else if(modelType == 'CUB'){
+                picklist.push('ชอบดีไซน์ รูปทรง (Nice design)');
+                picklist.push('เป็นรถออกใหม่ / รุ่นใหม่ (Newness)');
+                picklist.push('แตกต่าง ไม่เหมือนใคร (Unique)');
+                picklist.push('ขนาดรถเหมาะสม (Good size)');
+                picklist.push('แต่งแล้วสวย / แต่งสนุก (nice modify)');
+                picklist.push('ขับขี่ง่าย (easy riding)');
+                picklist.push('สมรรถนะดี (Good performance)');
+                picklist.push('เป็นยี่ห้อที่ชอบ (like brand)');
+                picklist.push('มีอุปกรณ์ที่ต้องการครบ (Full equipment)');
+                picklist.push('เป็นรถมีตำนาน/ชื่อเสียง (Legend/Good reputation)');
+                picklist.push('มี/เคยมีรุ่นนี้ (Have/Used to have this model)');
+                picklist.push('เก็บสะสม (Part of collection)');
+                picklist.push('ราคาเหมาะสม (Reasonable price)');
+                picklist.push('มีโปรโมชั่น / ของแถม (promotion)');
+                picklist.push('บริการหลังการขายดี (good after service)');
+                picklist.push('มีกิจกรรมพิเศษ (Having special event)');
+                picklist.push('มีกลุ่ม/สังคม ที่มีรถเหมือนกัน (Community)');
+            }
+
+            if(picklist){
+                generateCheckbox('q15Checkbox', picklist, 'q15');
+            }
+            
+        }
+
+        function generateBikeinfo(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('บุคคลใกล้ชิด (ญาติ ครอบครัว เพื่อน)');
+                picklist.push('ร้านขายรถมอเตอร์ไซค์ (Motorcycle shop)');
+                picklist.push('ร้านซ่อม/แต่งรถมอเตอร์ไซค์ (Customized shop)');
+                picklist.push('โฆษณาโทรทัศน์');
+                picklist.push('โฆษณาวิทยุ');
+                picklist.push('หนังสือ/นิตยสารเกี่ยวกับมอเตอร์ไซค์ (Magazine)');
+                picklist.push('แคตตาล็อก/แผ่นพับ/ใบปลิวต่างๆ (Leaflet)');
+                picklist.push('ป้ายโฆษณา (Ads billboard/mupi)');
+                picklist.push('รถแห่ (รถกระบะประชาสัมพันธ์)(Mobile car)');
+                picklist.push('เว็บ Thai Honda');
+                picklist.push('โซเชียลแอพพลิเคชั่น (Facebook/Youtube/Tiktok etc.)');
+                picklist.push('เว็บไซต์ (Pantip/Sanook etc.)');
+                picklist.push('การแข่งขันรถมอเตอร์ไซค์ (Racing)');
+                picklist.push('กิจกรรม/บูธแนะนำสินค้าตามสถานที่ต่างๆ (Activity/Event)');
+            }else if(modelType == 'BW'){
+                picklist.push('บุคคลใกล้ชิด (ญาติ ครอบครัว เพื่อน)');
+                picklist.push('ร้านขายรถมอเตอร์ไซค์ (Motorcycle shop)');
+                picklist.push('ร้านซ่อม/แต่งรถมอเตอร์ไซค์ (Customized shop)');
+                picklist.push('โฆษณาโทรทัศน์');
+                picklist.push('โฆษณาวิทยุ');
+                picklist.push('หนังสือ/นิตยสารเกี่ยวกับมอเตอร์ไซค์ (Magazine)');
+                picklist.push('แคตตาล็อก/แผ่นพับ/ใบปลิวต่างๆ (Leaflet)');
+                picklist.push('ป้ายโฆษณา (Ads billboard/mupi)');
+                picklist.push('รถแห่ (รถกระบะประชาสัมพันธ์)(Mobile car)');
+                picklist.push('เว็บ Thai Honda');
+                picklist.push('โซเชียลแอพพลิเคชั่น (Facebook/Youtube/Tiktok etc.)');
+                picklist.push('เว็บไซต์ (Pantip/Sanook etc.)');
+                picklist.push('การแข่งขันรถมอเตอร์ไซค์ (Racing)');
+                picklist.push('กิจกรรม/บูธแนะนำสินค้าตามสถานที่ต่างๆ (Activity/Event)');
+            }else if(modelType == 'CUB'){
+                picklist.push('บุคคลใกล้ชิด (ญาติ ครอบครัว เพื่อน)');
+                picklist.push('ร้านขายรถมอเตอร์ไซค์ (Motorcycle shop)');
+                picklist.push('ร้านซ่อม/แต่งรถมอเตอร์ไซค์ (Customized shop)');
+                picklist.push('โฆษณาโทรทัศน์');
+                picklist.push('โฆษณาวิทยุ');
+                picklist.push('หนังสือ/นิตยสารเกี่ยวกับมอเตอร์ไซค์ (Magazine)');
+                picklist.push('แคตตาล็อก/แผ่นพับ/ใบปลิวต่างๆ (Leaflet)');
+                picklist.push('ป้ายโฆษณา (Ads billboard/mupi)');
+                picklist.push('รถแห่ (รถกระบะประชาสัมพันธ์)(Mobile car)');
+                picklist.push('เว็บ Thai Honda');
+                picklist.push('โซเชียลแอพพลิเคชั่น (Facebook/Youtube/Tiktok etc.)');
+                picklist.push('เว็บไซต์ (Pantip/Sanook etc.)');
+                picklist.push('การแข่งขันรถมอเตอร์ไซค์ (Racing)');
+                picklist.push('กิจกรรม/บูธแนะนำสินค้าตามสถานที่ต่างๆ (Activity/Event)');
+            }
+
+            if(picklist){
+                generateCheckbox('q19Checkbox', picklist, 'q19');
+            }
+
+        }
+
+        function generateReasonNotToBuy(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('ไม่ชอบดีไซน์ รูปทรง');
+                picklist.push('เป็นรถรุ่นเก่า');
+                picklist.push('ไม่แตกต่าง ไม่พิเศษ');
+                picklist.push('แต่งไม่สวย');
+                picklist.push('ขนาดใหญ่ไป');
+                picklist.push('น้ำหนักมากไป');
+                picklist.push('ท่านั่งไม่ดี');
+                picklist.push('อัตราเร่งไม่ดี');
+                picklist.push('ความเร็วสูงสุดไม่ดี');
+                picklist.push('ขับขี่ยาก');
+                picklist.push('บรรทุกของได้ไม่ดี');
+                picklist.push('ไม่ทนทาน');
+                picklist.push('ไม่ชอบยี่ห้อนี้');
+                picklist.push('ไม่ค่อยมีคนใช้ / ไม่ฮิต');
+                picklist.push('ไม่มีอุปกรณ์ความปลอดภัย');
+                picklist.push('ไม่มีเทคโนโลยีใหม่ ทันสมัย');
+                picklist.push('อุปกรณ์ที่ต้องการมีไม่ครบ');
+                picklist.push('ราคาไม่เหมาะสม');
+                picklist.push('ไม่มีโปรโมชั่น / ของแถม');
+                picklist.push('บริการหลังการขายไม่ดี');
+                picklist.push('อายุรับประกันสั้น');
+                picklist.push('ไม่ค่อยมีศูนย์บริการ');
+                picklist.push('ไม่ประหยัดน้ำมัน');
+                picklist.push('ปล่อยมลภาวะเยอะ');
+                picklist.push('ไม่ได้ประหยัดค่าใช้จ่าย');
+            }else if(modelType == 'BW'){
+                picklist.push('ไม่ชอบดีไซน์ รูปทรง');
+                picklist.push('เป็นรถรุ่นเก่า');
+                picklist.push('น้ำหนักมากไป');
+                picklist.push('ท่านั่งไม่ดี');
+                picklist.push('ขนาดรถไม่เหมาะสม');
+                picklist.push('อัตราเร่งไม่ดี');
+                picklist.push('ความเร็วสูงสุดไม่ดี');
+                picklist.push('ขับขี่ยาก');
+                picklist.push('บรรทุกของได้ไม่ดี');
+                picklist.push('ไม่ทนทาน');
+                picklist.push('ไม่ชอบยี่ห้อนี้');
+                picklist.push('อุปกรณ์ที่ต้องการมีไม่ครบ');
+                picklist.push('รถไม่มีตำนาน/ไม่ชื่อเสียง');
+                picklist.push('ดูไม่เท่/ไม่เด่น');
+                picklist.push('ราคาไม่เหมาะสม');
+                picklist.push('ไม่มีโปรโมชั่น / ของแถม');
+                picklist.push('บริการหลังการขายไม่ดี');
+                picklist.push('ไม่มีกิจกรรมพิเศษ');
+                picklist.push('ไม่มีกลุ่ม/สังคม');
+            }else if(modelType == 'CUB'){
+                picklist.push('ไม่ชอบดีไซน์ รูปทรง');
+                picklist.push('เป็นรถรุ่นเก่า');
+                picklist.push('ไม่แตกต่าง ไม่พิเศษ');
+                picklist.push('แต่งไม่สวย');
+                picklist.push('ขนาดรถไม่เหมาะสม');
+                picklist.push('ขับขี่ยาก');
+                picklist.push('สมรรถนะไม่ดี');
+                picklist.push('ไม่ชอบยี่ห้อนี้');
+                picklist.push('อุปกรณ์ที่ต้องการมีไม่ครบ');
+                picklist.push('รถไม่มีตำนาน/ไม่ชื่อเสียง');
+                picklist.push('ไม่เคยมีประสบการณ์กับรุ่นนี้');
+                picklist.push('ไม่เหมาะกับการเก็บสะสม');
+                picklist.push('ไม่มีกิจกรรมพิเศษ');
+                picklist.push('ไม่มีกลุ่ม/สังคม');
+            }
+
+            if(picklist){
+                generateCheckbox('q22Checkbox', picklist, 'q22');
+            }
+        }
+
+        function generateDistance(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('6-10 กิโลเมตร');
+                picklist.push('11-20 กิโลเมตร');
+                picklist.push('21-50 กิโลเมตร');
+                picklist.push('51-80 กิโลเมตร');
+                picklist.push('81-100 กิโลเมตร');
+                picklist.push('101-150 กิโลเมตร');
+                picklist.push('151 กิโลเมตรขึ้นไป');
+            }else if(modelType == 'BW'){
+                picklist.push('≤50 km.');
+                picklist.push('51-100 km.');
+                picklist.push('101-200 km.');
+                picklist.push('201-300 km.');
+                picklist.push('301-400 km.');
+                picklist.push('401-500 km.');
+                picklist.push('> 500 km.');
+            }else if(modelType == 'CUB'){
+               picklist.push('ไม่ขับขี่เลย (Not riding)');
+                picklist.push('≤ 5 km.');
+                picklist.push('6-10 km.');
+                picklist.push('11-20 km.');
+                picklist.push('21-50 km.');
+                picklist.push('> 50 km.');
+            }
+
+            if(picklist){
+                generatePicklist('q30Picklist', picklist, 'q30');
+            }
+        }
+
+        function generateBikeUsage(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('ใช้ประกอบอาชีพ เช่นบรรทุกของ ส่งเอกสาร,ส่งอาหาร, รับส่งคน');
+                picklist.push('ใช้ในชีวิตประจำวัน/ไปกลับที่ทำงาน/เรียน (Daily Use, Commuting, Working) ');
+                picklist.push('ใช้ขี่เล่นระยะทางสั้นๆ ขี่ไปซื้อของหรือทำธุระเล็กๆ น้อยๆ');
+                picklist.push('ใช้ขี่ไปเที่ยว, ออกทริปทางไกล (Traveling, Going for a Trip)');
+                picklist.push('ใช้ขี่ไปรวมกลุ่ม เช่น พบปะสังสรรค์, กิจกรรมต่างๆ (Socializing, Joining Clubs and Community) ');
+                picklist.push('ใช้สำหรับแข่งรถ (ในสนามแข่ง,ท้องถนน)');
+                picklist.push('ไว้ตกแต่งเพิ่ม (For decorating/customizing) ');
+                picklist.push('อื่นๆ');
+            }else if(modelType == 'BW'){
+                picklist.push('ใช้ประกอบอาชีพ เช่นบรรทุกของ ส่งเอกสาร,ส่งอาหาร, รับส่งคน');
+                picklist.push('ใช้ในชีวิตประจำวัน/ไปกลับที่ทำงาน/เรียน (Daily Use, Commuting, Working) ');
+                picklist.push('ใช้ขี่เล่นระยะทางสั้นๆ ขี่ไปซื้อของหรือทำธุระเล็กๆ น้อยๆ');
+                picklist.push('ใช้ขี่ไปเที่ยว, ออกทริปทางไกล (Traveling, Going for a Trip)');
+                picklist.push('ใช้ขี่ไปรวมกลุ่ม เช่น พบปะสังสรรค์, กิจกรรมต่างๆ (Socializing, Joining Clubs and Community) ');
+                picklist.push('ใช้สำหรับแข่งรถ (ในสนามแข่ง,ท้องถนน)');
+                picklist.push('ไว้ตกแต่งเพิ่ม (For decorating/customizing) ');
+                picklist.push('อื่นๆ');
+            }else if(modelType == 'CUB'){
+                picklist.push('ใช้ประกอบอาชีพ เช่นบรรทุกของ ส่งเอกสาร,ส่งอาหาร, รับส่งคน');
+                picklist.push('ใช้ในชีวิตประจำวัน/ไปกลับที่ทำงาน/เรียน (Daily Use, Commuting, Working) ');
+                picklist.push('ใช้ขี่เล่นระยะทางสั้นๆ ขี่ไปซื้อของหรือทำธุระเล็กๆ น้อยๆ');
+                picklist.push('ใช้ขี่ไปเที่ยว, ออกทริปทางไกล (Traveling, Going for a Trip)');
+                picklist.push('ใช้ขี่ไปรวมกลุ่ม เช่น พบปะสังสรรค์, กิจกรรมต่างๆ (Socializing, Joining Clubs and Community) ');
+                picklist.push('ใช้สำหรับแข่งรถ (ในสนามแข่ง,ท้องถนน)');
+                picklist.push('ไว้ตกแต่งเพิ่ม (For decorating/customizing) ');
+                picklist.push('อื่นๆ');
+            }
+
+            if(picklist){
+                generateCheckbox('q31Checkbox', picklist, 'q31');
+            }
+        }
+
+        function generateBikeTopReason(modelType){
+            var picklist = [];
+            if(modelType == 'WC'){
+                picklist.push('ใช้ประกอบอาชีพ เช่น บรรทุกของ, ส่งเอกสาร, รับส่งคน');
+                picklist.push('ขี่ไปกลับที่ทำงานหรือโรงเรียน');
+                picklist.push('ขี่ไปซื้อของหรือทำธุระเล็กๆน้อยๆ');
+                picklist.push('ขี่เที่ยวเล่น');
+                picklist.push('ใช้แข่งรถ, ซิ่ง (ในสนามแข่ง, ท้องถนน)');
+                picklist.push('อื่นๆ');
+
+            }else if(modelType == 'BW'){
+                picklist.push('ใช้ประกอบอาชีพ เช่น บรรทุกของ, ส่งเอกสาร, รับส่งคน');
+                picklist.push('ขี่ไปกลับที่ทำงานหรือโรงเรียน');
+                picklist.push('ขี่ไปซื้อของหรือทำธุระเล็กๆน้อยๆ');
+                picklist.push('ขี่เที่ยวเล่น');
+                picklist.push('ใช้แข่งรถ, ซิ่ง (ในสนามแข่ง, ท้องถนน)');
+                picklist.push('อื่นๆ');
+
+            }else if(modelType == 'CUB'){
+                picklist.push('ใช้ประกอบอาชีพ เช่น บรรทุกของ, ส่งเอกสาร, รับส่งคน');
+                picklist.push('ขี่ไปกลับที่ทำงานหรือโรงเรียน');
+                picklist.push('ขี่ไปซื้อของหรือทำธุระเล็กๆน้อยๆ');
+                picklist.push('ขี่เที่ยวเล่น');
+                picklist.push('ใช้แข่งรถ, ซิ่ง (ในสนามแข่ง, ท้องถนน)');
+                picklist.push('อื่นๆ');
+
+            }
+
+            if(picklist){
+                generatePicklist('q32Select', picklist, 'q32');
+            }
+        }
+
+        function generateCheckbox(cmpName, picklist, qnum){
+            var checkBoxElement = '';
+            picklist.forEach((element, index) => {
+                checkBoxElement += '<div class="form-check">' +
+                                    '<input class="form-check-input ' + qnum + '" onchange="checkboxChecked(\''+qnum+'\')" type="checkbox" value="' + element + '" name="' + cmpName + '" id="'+ qnum + index + 'Choice">' +
+                                    '<label class="form-check-label" for="' + qnum + index + 'Choice">' +
+                                     element +
+                                    '</label>' +
+                                    '</div>';
+            })
+
+            document.getElementById(cmpName).innerHTML = checkBoxElement;
+        }
+
+        function generatePicklist(cmpName, picklist){
+            var checkBoxElement = '<option selected value=""> -- โปรดเลือก --</option>';
+            picklist.forEach(element => {
+                checkBoxElement += '<option value="'+element+'">'+element+'</option>';
+            })
+
+            document.getElementById(cmpName).innerHTML = checkBoxElement;
+        }
+
+        function checkboxChecked(className){
+            console.log('checkboxChecked')
+            var allCheckbox = document.getElementsByClassName(className);
+            var checked = false;
+
+            Array.prototype.forEach.call(allCheckbox, function(checkbox) {
+                if(checkbox.checked){
+                    checked = true;
+                }
+            });
+
+            answerQuestion(checked, className);
+           
+        }
       
         function answerQuestion(value, questionNum){
             var question = document.getElementById(questionNum+'Card');
@@ -579,60 +928,7 @@
     </div>
 
 
-   <div class="card w-100 mb-3 cardStyleNotAnswer" id="q13Card">
-        <div class="card-body">
-            <h5 class="card-title cardHeader" > 
-                <div class="row">
-                    <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">13</span>
-                    </div>
-                    <div class="col-11">
-                        <div>  เหตุผลในการเลือกซื้อรถจักรยานยนต์คันนี้ (ไม่เกิน 5 ข้อ) <span class="requiredStar">*</span></div> 
-                        <br/>
-                        <div class="row">
-                            <div class="col-10">
-                              //checkbox for each choice here
-                            </div>
-                            <div class="col-1 alignMiddle scoreAnswer" >
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>       
-            </h5>   
-        </div>
-    </div>
-
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q14Card">
-        <div class="card-body">
-            <h5 class="card-title cardHeader" > 
-                <div class="row">
-                    <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">14</span>
-                    </div>
-                    <div class="col-11">
-                        <div>  ผู้ใช้รถคันนี้เป็นบุคคลเดียวกับเจ้าของรถหรือไม่<span class="requiredStar">*</span></div> 
-                        <br/>
-                        <div class="row">
-                            <div class="col-10">
-                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q15')">
-                                  <option selected value=""> -- โปรดเลือก --</option>
-                                  <option value="ไม่ใช่">ใช่</option>
-                                  <option value="ไม่ใช่">ไม่ใช่</option>
-                                </select>
-                            </div>
-                            <div class="col-1 alignMiddle scoreAnswer" >
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>       
-            </h5>   
-        </div>
-    </div>
-
-
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q15Card">
+   <div class="card w-100 mb-3 cardStyleNotAnswer" id="q15Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
@@ -640,11 +936,11 @@
                         <span class="badge questionNumBadge">15</span>
                     </div>
                     <div class="col-11">
-                        <div>  ราคาเงินดาวน์ (รวม พรบ. + จดทะเบียน)<span class="requiredStar">*</span></div> 
+                        <div>  เหตุผลในการเลือกซื้อรถจักรยานยนต์คันนี้ (ไม่เกิน 5 ข้อ) <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
-                            <div class="col-10">
-                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q15')">
+                            <div class="col-10" id="q15Checkbox">
+                               //generate checkbox here
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -664,11 +960,15 @@
                         <span class="badge questionNumBadge">16</span>
                     </div>
                     <div class="col-11">
-                        <div>  เงินผ่อนต่องวด<span class="requiredStar">*</span></div> 
+                        <div>  ผู้ใช้รถคันนี้เป็นบุคคลเดียวกับเจ้าของรถหรือไม่<span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q16')">
+                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q16')">
+                                  <option selected value=""> -- โปรดเลือก --</option>
+                                  <option value="ไม่ใช่">ใช่</option>
+                                  <option value="ไม่ใช่">ไม่ใช่</option>
+                                </select>
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -689,11 +989,35 @@
                         <span class="badge questionNumBadge">17</span>
                     </div>
                     <div class="col-11">
-                        <div> ก่อนเลือกซื้อรถคันนี้ ได้ข้อมูลรถคันนี้มาจากที่ใดบ้าง<span class="requiredStar">*</span></div> 
+                        <div>  ราคาเงินดาวน์ (รวม พรบ. + จดทะเบียน)<span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                //checkbox for each choice here
+                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q17')">
+                            </div>
+                            <div class="col-1 alignMiddle scoreAnswer" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+            </h5>   
+        </div>
+    </div>
+
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q16Card">
+        <div class="card-body">
+            <h5 class="card-title cardHeader" > 
+                <div class="row">
+                    <div class="col-1 alignMiddle">
+                        <span class="badge questionNumBadge">18</span>
+                    </div>
+                    <div class="col-11">
+                        <div>  เงินผ่อนต่องวด<span class="requiredStar">*</span></div> 
+                        <br/>
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q18')">
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -706,7 +1030,33 @@
     </div>
 
 
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q18Card">
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q19Card">
+        <div class="card-body">
+            <h5 class="card-title cardHeader" > 
+                <div class="row">
+                    <div class="col-1 alignMiddle">
+                        <span class="badge questionNumBadge">19</span>
+                    </div>
+                    <div class="col-11">
+                        <div> ก่อนเลือกซื้อรถคันนี้ ได้ข้อมูลรถคันนี้มาจากที่ใดบ้าง<span class="requiredStar">*</span></div> 
+                        <br/>
+                        <div class="row">
+                            <div class="col-10" id="q19Checkbox">
+                               
+                            </div>
+                            <div class="col-1 alignMiddle scoreAnswer" >
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>       
+            </h5>   
+        </div>
+    </div>
+
+
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q20Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
@@ -718,7 +1068,7 @@
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q18')">
+                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q20')">
                                       <option selected value=""> -- โปรดเลือก --</option>
                                       <option value="ไม่ได้เปรียบเทียบกับรุ่นอื่นเลย">ไม่ได้เปรียบเทียบกับรุ่นอื่นเลย</option>
                                       <option value="Honda">Honda</option>
@@ -740,56 +1090,6 @@
     </div>
 
 
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q19Card">
-        <div class="card-body">
-            <h5 class="card-title cardHeader" > 
-                <div class="row">
-                    <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">19</span>
-                    </div>
-                    <div class="col-11">
-                        <div>  เปรียบเทียบกับรุ่น<span class="requiredStar">*</span></div> 
-                        <br/>
-                        <div class="row">
-                            <div class="col-10">
-                                <input type="text" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q19')">
-                            </div>
-                            <div class="col-1 alignMiddle scoreAnswer" >
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>       
-            </h5>   
-        </div>
-    </div>
-
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q20Card">
-        <div class="card-body">
-            <h5 class="card-title cardHeader" > 
-                <div class="row">
-                    <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">20</span>
-                    </div>
-                    <div class="col-11">
-                        <div>  ท่านไม่ซื้อรุ่นที่เปรียบเทียบเพราะเหตุใด<span class="requiredStar">*</span></div> 
-                        <br/>
-                        <div class="row">
-                            <div class="col-10">
-                                //checkbox for each choice here
-                            </div>
-                            <div class="col-1 alignMiddle scoreAnswer" >
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>       
-            </h5>   
-        </div>
-    </div>
-
-
-
     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q21Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
@@ -798,11 +1098,11 @@
                         <span class="badge questionNumBadge">21</span>
                     </div>
                     <div class="col-11">
-                        <div>  รถจักรยานยนต์คันที่มี/เคยมีอยู่แล้ว ใช้มาแล้ว ประมาณกี่ปี (หากไม่เคยมีใส่ 0) <span class="requiredStar">*</span></div> 
+                        <div>  เปรียบเทียบกับรุ่น<span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q21')">
+                                <input type="text" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q21')">
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -814,8 +1114,7 @@
         </div>
     </div>
 
-
-     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q22Card">
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q22Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
@@ -823,11 +1122,11 @@
                         <span class="badge questionNumBadge">22</span>
                     </div>
                     <div class="col-11">
-                        <div>  ในครอบครัวที่อาศัยด้วยกัน มีรถจำนวนกี่คัน มีมอเตอร์ไซค์ (รวมคันใหม่นี้) <span class="requiredStar">*</span></div> 
+                        <div>  ท่านไม่ซื้อรุ่นที่เปรียบเทียบเพราะเหตุใด<span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
-                            <div class="col-10">
-                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q22')">
+                            <div class="col-10" id="q22Checkbox">
+                             
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -838,8 +1137,6 @@
             </h5>   
         </div>
     </div>
-
-
 
 
 
@@ -851,7 +1148,7 @@
                         <span class="badge questionNumBadge">23</span>
                     </div>
                     <div class="col-11">
-                        <div>  มีมอเตอร์ไซค์อีวีกี่คัน <span class="requiredStar">*</span></div> 
+                        <div>  รถจักรยานยนต์คันที่มี/เคยมีอยู่แล้ว ใช้มาแล้ว ประมาณกี่ปี (หากไม่เคยมีใส่ 0) <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
@@ -868,7 +1165,7 @@
     </div>
 
 
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q24Card">
+     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q24Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
@@ -876,7 +1173,7 @@
                         <span class="badge questionNumBadge">24</span>
                     </div>
                     <div class="col-11">
-                        <div>  มีรถยนต์กี่คัน <span class="requiredStar">*</span></div> 
+                        <div>  ในครอบครัวที่อาศัยด้วยกัน มีรถจำนวนกี่คัน มีมอเตอร์ไซค์ (รวมคันใหม่นี้) <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
@@ -895,6 +1192,7 @@
 
 
 
+
     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q25Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
@@ -903,7 +1201,7 @@
                         <span class="badge questionNumBadge">25</span>
                     </div>
                     <div class="col-11">
-                        <div>  มีรถกระบะ (ปิคอัพ) กี่คัน <span class="requiredStar">*</span></div> 
+                        <div>  มีมอเตอร์ไซค์อีวีกี่คัน <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
@@ -928,7 +1226,7 @@
                         <span class="badge questionNumBadge">26</span>
                     </div>
                     <div class="col-11">
-                        <div>  มีรถยนต์อีวีกี่คัน <span class="requiredStar">*</span></div> 
+                        <div>  มีรถยนต์กี่คัน <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
@@ -946,19 +1244,71 @@
 
 
 
+
     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q27Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">26</span>
+                        <span class="badge questionNumBadge">27</span>
+                    </div>
+                    <div class="col-11">
+                        <div>  มีรถกระบะ (ปิคอัพ) กี่คัน <span class="requiredStar">*</span></div> 
+                        <br/>
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q27')">
+                            </div>
+                            <div class="col-1 alignMiddle scoreAnswer" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+            </h5>   
+        </div>
+    </div>
+
+
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q28Card">
+        <div class="card-body">
+            <h5 class="card-title cardHeader" > 
+                <div class="row">
+                    <div class="col-1 alignMiddle">
+                        <span class="badge questionNumBadge">28</span>
+                    </div>
+                    <div class="col-11">
+                        <div>  มีรถยนต์อีวีกี่คัน <span class="requiredStar">*</span></div> 
+                        <br/>
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="number" class="form-control"  name="purchaseDate" onchange="answerQuestion(this.value, 'q28')">
+                            </div>
+                            <div class="col-1 alignMiddle scoreAnswer" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+            </h5>   
+        </div>
+    </div>
+
+
+
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q29Card">
+        <div class="card-body">
+            <h5 class="card-title cardHeader" > 
+                <div class="row">
+                    <div class="col-1 alignMiddle">
+                        <span class="badge questionNumBadge">29</span>
                     </div>
                     <div class="col-11">
                         <div>  คุณมีรายได้ส่วนตัวต่อเดือนประมาณเท่าไร <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q27')">
+                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q29')">
                                     <option selected value=""> -- โปรดเลือก --</option>
                                     <option value="ไม่มีรายได้">ไม่มีรายได้</option>
                                     <option value="ไม่เกิน 10,000 บาท">ไม่เกิน 10,000 บาท</option>
@@ -989,22 +1339,20 @@
 
 
 
-    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q28Card">
+    <div class="card w-100 mb-3 cardStyleNotAnswer" id="q30Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">28</span>
+                        <span class="badge questionNumBadge">30</span>
                     </div>
                     <div class="col-11">
                         <div>  ระยะทางที่ใช้ต่อวัน โดยประมาณ <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q28')">
-                                    <option selected value=""> -- โปรดเลือก --</option>
-                                    <option value="ไม่เกิน 5 กิโลเมตร">ไม่เกิน 5 กิโลเมตร</option>
-                                    <option value="6-10 กิโลเมตร">6-10 กิโลเมตร</option>
+                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q30')" id="q30Picklist">
+                                   
 
                                 </select>
                             </div>
@@ -1021,19 +1369,19 @@
 
 
 
-     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q29Card">
+     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q31Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">29</span>
+                        <span class="badge questionNumBadge">31</span>
                     </div>
                     <div class="col-11">
                         <div>  คุณใช้รถคันนี้ ทำอะไรบ้าง (ตอบได้มากกว่า 1 ข้อ) <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
-                            <div class="col-10">
-                               //checkbox here
+                            <div class="col-10" id="q31Checkbox">
+                                
                             </div>
                             <div class="col-1 alignMiddle scoreAnswer" >
                                 
@@ -1047,28 +1395,20 @@
 
 
 
-     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q30Card">
+     <div class="card w-100 mb-3 cardStyleNotAnswer" id="q32Card">
         <div class="card-body">
             <h5 class="card-title cardHeader" > 
                 <div class="row">
                     <div class="col-1 alignMiddle">
-                        <span class="badge questionNumBadge">30</span>
+                        <span class="badge questionNumBadge">32</span>
                     </div>
                     <div class="col-11">
                         <div>  คุณใช้รถคันนี้ทำอะไรมากที่สุด ได้แก่ ข้อ <span class="requiredStar">*</span></div> 
                         <br/>
                         <div class="row">
                             <div class="col-10">
-                               //checkbox here
-                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q30')">
-                                    <option selected value=""> -- โปรดเลือก --</option>
-                                    <option value="ใช้ประกอบอาชีพ เช่น บรรทุกของ, ส่งเอกสาร, รับส่งคน">ใช้ประกอบอาชีพ เช่น บรรทุกของ, ส่งเอกสาร, รับส่งคน</option>
-                                    <option value="ขี่ไปกลับที่ทำงานหรือโรงเรียน">ขี่ไปกลับที่ทำงานหรือโรงเรียน</option>
-                                    <option value="ขี่ไปซื้อของหรือทำธุระเล็กๆน้อยๆ">ขี่ไปซื้อของหรือทำธุระเล็กๆน้อยๆ</option>
-                                    <option value="ขี่เที่ยวเล่น">ขี่เที่ยวเล่น</option>
-                                    <option value="ใช้แข่งรถ, ซิ่ง (ในสนามแข่ง, ท้องถนน)">ใช้แข่งรถ, ซิ่ง (ในสนามแข่ง, ท้องถนน)</option>
-                                    <option value="อื่นๆ">อื่นๆ</option>
-
+                                <select class="form-select" aria-label="Default select example" onchange="answerQuestion(this.value, 'q32')" id="q32Select">
+                                   
                                 </select>
 
                             </div>
